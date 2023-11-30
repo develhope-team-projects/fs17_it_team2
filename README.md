@@ -7,6 +7,12 @@ Emilio Sanguinè </i>
 <br>
 <hr>
 
+<h2> Language and tools </h2>
+
+<b> Html, Tailwind, Javascript, React </b> 
+<br>
+<hr>
+
 <h2>Branch naming: </h2> 
 
 <b>feature/</b>   <i>new feature of website </i> 
