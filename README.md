@@ -1,3 +1,5 @@
+<p> Kcal-endar is a diet tracking app for both users and nutritionists. Users enjoy an intuitive weekly calendar to log meals, set goals, and track nutrients. Nutritionists not only access real-time patient diaries but also compile personalized diets, streamlining monitoring and communication. Advanced features include automated reports and personalized suggestions. Streamlining diet management for users and nutritionists alike. </p>
+
 <h2>Members:</h2>
 <i>Giovanni Spatafora <br>
 Marco Giallombardo<br>
