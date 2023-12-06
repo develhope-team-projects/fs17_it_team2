@@ -11,7 +11,7 @@ Emilio Sanguinè </i>
 
 <h2> Language and tools </h2>
 
-<b> Html, Tailwind, Javascript, React </b> 
+<b> Html, Tailwind, Javascript, React, Typescript and Node.js </b> 
 <br>
 <hr>
 
