@@ -1,6 +1,6 @@
 import { Signup } from "./-components/Signup/Signup";
 
-const App = () => {
+export const App = () => {
   return (
     <div>
       <div>{/* navbar */}</div>
@@ -11,4 +11,3 @@ const App = () => {
   );
 };
 
-export default App;
