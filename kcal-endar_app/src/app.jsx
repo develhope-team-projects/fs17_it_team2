@@ -1,4 +1,4 @@
-import { LoginSignup } from "./login&signup_page/LoginSignup";
+import { LoginSignup } from "./login&signup_page/components/LoginSignup";
 
 export const App = () => {
   return (

@@ -1,4 +1,4 @@
-import { UseSignup } from "../-custom-hooks/UseSignup";
+import { UseSignup } from "../custom-hooks/UseSignup";
 
 export function LoginSignup() {
   const {
