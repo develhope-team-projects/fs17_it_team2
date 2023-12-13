@@ -1,11 +1,11 @@
-import { Signup } from "./-components/Signup/Signup";
+import { Signup } from "./login&signup_page/signup/Signup";
 
 export const App = () => {
   return (
     <div>
       <div>{/* navbar */}</div>
       {/* Componenti */}
-      <Signup />
+     <Signup />
       <div>{/* footer */}</div>
     </div>
   );
