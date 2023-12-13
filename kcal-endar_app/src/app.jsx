@@ -1,13 +1,12 @@
-import { Signup } from "./login&signup_page/signup/Signup";
+import { LoginSignup } from "./login&signup_page/LoginSignup";
 
 export const App = () => {
   return (
     <div>
       <div>{/* navbar */}</div>
       {/* Componenti */}
-     <Signup />
+      <LoginSignup />
       <div>{/* footer */}</div>
     </div>
   );
 };
-
