@@ -1,0 +1,30 @@
+@media screen and (min-width: 2560px ) {
+    #navbar-style {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: var(--green-primary);
+        font-family: var(--custom-font);
+        
+    }
+
+    #navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 26vw;
+    }
+
+    #navbar-brand-visible {
+        display: flex;
+        justify-content: space-around;
+        gap: 2vw;
+        font-size: 1.3rem;
+    }
+
+    #navbar-logo {
+        width: 12vw;
+    }
+
+    
+}
