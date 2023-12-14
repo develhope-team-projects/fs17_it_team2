@@ -1,72 +1,72 @@
 import { useState } from "react";
 
 export function UseSignup() {
-  const [data, setData] = useState({
+  const [dataSignup, setDataSignup] = useState({
+    nome: "",
+    cognome: "",
     username: "",
     email: "",
     password: "",
   });
-  const [invalidUsername, setInvalidUsername] = useState("");
-  const [invalidEmail, setInvalidEmail] = useState("");
-  const [invalidPassword, setInvalidPassword] = useState("");
 
-  // Funzione di verifica username
-  const isValidUsername = (username) => {
-    const validUSername = /^[a-zA-Z0-9_.]+$/;
-    return validUSername.test(username);
+  const [errorsSignup, setErrorsSignup] = useState({
+    invalidUsername: "",
+    invalidEmail: "",
+    invalidPassword: "",
+    invalidName: "",
+    invalidSurname: "",
+  });
+
+  const regexPatterns = {
+    alpha: /^[a-zA-Z]/,
+    alphanumeric: /^[a-zA-Z0-9_.]+$/,
+    email: /^[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/,
+    password: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/,
   };
 
-  // Funzione di verifica email
-  const isValidEmail = (email) => {
-    const validEmail = /^[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
-    return validEmail.test(email);
-  };
+  const isValid = (value, regex) => regex.test(value);
 
-  // Funzione di verifica password
-  const isValidPassword = (password) => {
-    const validPass = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
-    return validPass.test(password);
-  };
-
-  // funzione digitazione input
   function handlerChange(e) {
     const { name, value } = e.target;
-    setData((prevData) => ({
+    setDataSignup((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    value === "" ? setErrorsSignup({}) : "";
   }
 
-  // funzione al click sul button
   const handlerBtn = (evt) => {
     evt.preventDefault();
-    const { username, email, password } = data;
-    console.log(data);
+    const { nome, cognome, username, email, password } = dataSignup;
 
-    if (username !== "" && !isValidUsername(username)) {
-      setInvalidUsername(() =>
-        "L'username non può contenere caratteri speciali (es:£, $, %, &, *, @)");
-      console.log(invalidUsername);
-    }
-
-    if (email !== "" && !isValidEmail(email)) {
-      setInvalidEmail(() => "Inserisci un'email valida");
-      console.log(invalidEmail);
-    }
-
-    if (password !== "" && !isValidPassword(password)) {
-      setInvalidPassword(() => 
-        "La password deve contenere almeno 8 caratteri, tra cui un numero e un carattere speciale");
-      console.log(invalidPassword);
-    }
+    setErrorsSignup({
+      invalidUsername:
+        username && !isValid(username, regexPatterns.alphanumeric)
+          ? "ATTENZIONE: L'username non può contenere caratteri speciali (es:£, $, %, &, *, @)"
+          : "",
+      invalidEmail:
+        email && !isValid(email, regexPatterns.email)
+          ? "ATTENZIONE: Inserisci un'email valida"
+          : "",
+      invalidPassword:
+        password && !isValid(password, regexPatterns.password)
+          ? "ATTENZIONE: inserisci una password valida"
+          : "",
+      invalidName:
+        nome && !isValid(nome, regexPatterns.alpha)
+          ? "ATTENZIONE: Il nome non può contenere numeri e caratteri speciali (es:£, $, %, &, *, @)"
+          : "",
+      invalidSurname:
+        cognome && !isValid(cognome, regexPatterns.alpha)
+          ? "ATTENZIONE: Il cognome non può contenere numeri e caratteri speciali (es:£, $, %, &, *, @)"
+          : "",
+    });
   };
 
   return {
-    data,
-    invalidUsername,
-    invalidEmail,
-    invalidPassword,
+    dataSignup,
+    errorsSignup,
     onSignup: handlerBtn,
-    onInputChange: handlerChange,
+    onInputChangeSignup: handlerChange,
   };
 }
