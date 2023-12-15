@@ -1,24 +1,25 @@
+#navbar-style {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: var(--green-primary);
+    font-family: var(--custom-font);
+
+}
+
 /* Media query 480px */
 
-@media screen and (min-width: 480px) {
-    #navbar-style {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        background-color: var(--green-primary);
-        font-family: var(--custom-font);
-
-    }
-
-    #navbar-container {
+@media screen and (min-width: 320px) {
+    
+    #navbar-collapse {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        /* gap: 10vw; */
+        gap: 2rem;
     }
 
     #navbar-logo {
-        width: 12vw;
+        width: 40vw;
     }
 
     #navbar-offcanvas {
@@ -26,7 +27,7 @@
     }
 
     .navbar-hamburger-menu {
-        width: 2vw;
+        width: 8vw;
         fill: var(--green-primary) !important;
     }
 
@@ -62,20 +63,12 @@
 /* Media query 768px */
 
 @media screen and (min-width: 768px) {
-    #navbar-style {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        background-color: var(--green-primary);
-        font-family: var(--custom-font);
-
-    }
-
-    #navbar-container {
+    
+    #navbar-collapse {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        /* gap: 10vw; */
+        gap: 35vw;
     }
 
     #navbar-logo {
@@ -123,15 +116,7 @@
 /* Media query 1280px */
 
 @media screen and (min-width: 1280px) {
-    #navbar-style {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        background-color: var(--green-primary);
-        font-family: var(--custom-font);
-
-    }
-
+   
     #navbar-container {
         display: flex;
         align-items: center;
@@ -168,15 +153,7 @@
 /* Media query 1920px*/
 
 @media screen and (min-width: 1920px) {
-    #navbar-style {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        background-color: var(--green-primary);
-        font-family: var(--custom-font);
-
-    }
-
+    
     #navbar-container {
         display: flex;
         align-items: center;
@@ -213,16 +190,6 @@
 /* Media query 2560px */
 
 @media screen and (min-width: 2560px) {
-    #navbar-style {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        background-color: var(--green-primary)
-            /* #caf8a7 */
-        ;
-        font-family: var(--custom-font);
-
-    }
 
     #navbar-container {
         display: flex;
