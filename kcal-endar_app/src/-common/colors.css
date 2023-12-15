@@ -1,12 +1,15 @@
 :root {
-  --green-primary: #38FFC0;
-  --orange-primary: #FF664C;
-  --blue-primary: #3A6EB3
-  --white-secondary: #F5F5F5;
-  --orange-secondary: #FFA07A;
-  --green-secondary: #11D194;
-  --blu-secondary: #74AEFA;
-  --gradient-green-primary:
-   linear-gradient(60deg, #38FFC0 30%,
-   #0b9166 100%  );
+  --green-primary: #38ffc0;
+  --orange-primary: #ff664c;
+  --blue-primary: #3a6eb3;
+  --white-secondary: #f5f5f5;
+  --orange-secondary: #ffa07a;
+  --green-secondary: #11d194;
+  --blu-secondary: #74aefa;
+  --gradient-green-blue: linear-gradient(
+    45deg,
+   #38ffc0 30%,
+    #74aefa 80%,
+    #11d194 99%
+  );
 }
