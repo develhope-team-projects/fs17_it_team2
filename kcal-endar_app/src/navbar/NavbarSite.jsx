@@ -7,7 +7,7 @@ import '../navbar/navbarStyle-style.css'
 import '../-common/colors.css';
 import '../-common/font.css';
 import logo from '../-assets/logo/Logo.name.png';
-import avatar from '../-assets/icons/user-avatar-blue.svg';
+import avatar from '../-assets/icons/user-avatar-orange.svg';
 import menu from '../-assets/icons/menu.svg'
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive'
@@ -28,53 +28,58 @@ export function NavbarSite() {
     const handleShow = () => setShow(true);
 
     return (
-        <Navbar bsPrefix='navbar' expand="lg" id='navbar-style' fixed="top">
-            <Container id='navbar-container'>
-                {!navCollapse &&
-                    <Navbar id='navbar-container'>
-                        <Navbar.Brand href="#home" id='navbar-brand-logo'>
-                            <img src={logo} alt='KCALendar' id='navbar-logo' />
-                        </Navbar.Brand>
-                        <Navbar.Brand id='navbar-brand-visible'>
-                            <Nav.Link href="#chi-siamo" className='navbar-link'>Chi siamo</Nav.Link>
-                            <Nav.Link href="#come-funziona" className='navbar-link'>Come funziona</Nav.Link>
-                            <Nav.Link href="#professionisti" className='navbar-link'>I nostri professionisti</Nav.Link>
-                            <Nav.Link href="#ricette" className='navbar-link'>Ricette</Nav.Link>
-                        </Navbar.Brand>
-                        <Nav.Link href="#profile" id='navbar-brand-avatar'>
-                            <img src={avatar} width="40" height="40" />
-                        </Nav.Link>
-                    </Navbar>}
-
-                {/* Hamburger menu */}
-                {navCollapse &&
-                    <Navbar id="navbar-collapse">
-                        <Button onClick={handleShow} id='navbar-menu'>
-                            <img src={menu} alt='Menù' className='navbar-hamburger-menu' />
-                        </Button>
-                        <Offcanvas show={show} onHide={handleClose} id='navbar-offcanvas'>
-                            <Offcanvas.Header closeButton>
-                                <Offcanvas.Title id='navbar-title-menu'>
-                                    <div>KCALendar</div>
-                                </Offcanvas.Title>
-                            </Offcanvas.Header>
-                            <Offcanvas.Body>
+        
+        <div className='navbar-style-div'>
+            <div id='prova'></div>          
+        
+            <Navbar bsPrefix='navbar' expand="lg" id='navbar-style' fixed="top">
+                <Container id='navbar-container'>
+                    {!navCollapse &&
+                        <Navbar id='navbar-container'>
+                            <Navbar.Brand href="#home" id='navbar-brand-logo'>
+                                <img src={logo} alt='KCALendar' id='navbar-logo' />
+                            </Navbar.Brand>
+                            <Navbar.Brand id='navbar-brand-visible'>
                                 <Nav.Link href="#chi-siamo" className='navbar-link'>Chi siamo</Nav.Link>
                                 <Nav.Link href="#come-funziona" className='navbar-link'>Come funziona</Nav.Link>
                                 <Nav.Link href="#professionisti" className='navbar-link'>I nostri professionisti</Nav.Link>
                                 <Nav.Link href="#ricette" className='navbar-link'>Ricette</Nav.Link>
-                            </Offcanvas.Body>
-                        </Offcanvas>
-                        <Navbar.Brand href="#home" id='navbar-brand-logo'>
-                            <img src={logo} alt='KCALendar' id='navbar-logo' />
-                        </Navbar.Brand>
-                        <Navbar.Brand id='navbar-brand-avatar'>
-                            <Nav.Link href="#profile">
-                                <img src={avatar} width="20" height="20" />
+                            </Navbar.Brand>
+                            <Nav.Link href="#profile" id='navbar-brand-avatar'>
+                                <img src={avatar} width="40" height="40" />
                             </Nav.Link>
-                        </Navbar.Brand>
-                    </Navbar>}
-            </Container>
-        </Navbar>
+                        </Navbar>}
+
+                    {/* Hamburger menu */}
+                    {navCollapse &&
+                        <Navbar bsPrefix='navbar' id="navbar-collapse">
+                            <Button onClick={handleShow} id='navbar-menu'>
+                                <img src={menu} alt='Menù' className='navbar-hamburger-menu' />
+                            </Button>
+                            <Offcanvas show={show} onHide={handleClose} id='navbar-offcanvas'>
+                                <Offcanvas.Header closeButton>
+                                    <Offcanvas.Title id='navbar-title-menu'>
+                                        <div>KCALendar</div>
+                                    </Offcanvas.Title>
+                                </Offcanvas.Header>
+                                <Offcanvas.Body>
+                                    <Nav.Link href="#chi-siamo" className='navbar-link'>Chi siamo</Nav.Link>
+                                    <Nav.Link href="#come-funziona" className='navbar-link'>Come funziona</Nav.Link>
+                                    <Nav.Link href="#professionisti" className='navbar-link'>I nostri professionisti</Nav.Link>
+                                    <Nav.Link href="#ricette" className='navbar-link'>Ricette</Nav.Link>
+                                </Offcanvas.Body>
+                            </Offcanvas>
+                            <Navbar.Brand href="#home" id='navbar-brand-logo'>
+                                <img src={logo} alt='KCALendar' id='navbar-logo' />
+                            </Navbar.Brand>
+                            <Navbar.Brand id='navbar-brand-avatar'>
+                                <Nav.Link href="#profile">
+                                    <img src={avatar} width="35" height="35" />
+                                </Nav.Link>
+                            </Navbar.Brand>
+                        </Navbar>}
+                </Container>
+            </Navbar>
+        </div>
     );
 }
