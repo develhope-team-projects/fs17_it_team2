@@ -1,13 +1,13 @@
-
 @import './colors.css';
 @import './font.css';
-
+@import './media-query.css';
 
 
 *{
   font-size: 16px;
   margin: 0;
-  font-family: var(--custom-font);
+  font-family: var(--custom-font)
+  ;
 }
 
 body{
@@ -15,3 +15,4 @@ body{
   padding: 0;
   box-sizing: border-box;
 }
+

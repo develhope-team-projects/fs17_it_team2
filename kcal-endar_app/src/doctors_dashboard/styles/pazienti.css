@@ -1,97 +1,54 @@
-.item-container {
-background-image: var(--white-secondary);  
-  display: flex;
-  max-height: 40vh;
-  width: 50vw;
-  flex-wrap: wrap;
-  overflow: scroll;
-  gap: 1rem;
-  padding: 1rem;
-  justify-content: center;
-  text-align: center;
+.swiper {
+  background-color: rgb(255, 255, 255);
+  margin-left: 0 !important;
+  
 }
 
-.card-paziente-container {
-  background-image: var(--gradient-green-blue);
-}
-
-@media (max-width: 2560px) {
-  .card-paziente-container {
-    flex: 1 1 20%;
-    cursor: pointer;
-    flex: 0 0 20%;
+@media (max-width: 2540px) {
+  .swiper {
+    width: 45vw;
   }
+
 }
+
 @media (max-width: 1920px) {
-  .card-paziente-container {
-    width: 20%;
-    cursor: pointer;
-    flex: 0 0 30%;
+  .swiper {
+    width: 45vw;
   }
+
 }
-@media (max-width: 1032px) {
-  .item-container {
-    width: 100%;
+@media (max-width: 1280px) {
+  .swiper {
+    width: 100vw;
   }
-  .item-container {
-    width: 100%;
-  }
-  .card-paziente-container {
-    width: 15%;
-    cursor: pointer;
-    flex: 0 0 30%;
-  }
+
 }
 
 @media (max-width: 768px) {
-  .item-container {
-    width: 100%;
+  .swiper {
+    width: 100vw;
   }
-  .card-paziente-container {
-    flex: 0 0 30%;
-    cursor: pointer;
-    flex: 0 0 40%;
+
+  .swiper-button-next {
+    right: 140px !important;
+    color: black !important;
+  }
+  .swiper-button-prev {
+    left: 140px !important;
+    color: black !important;
   }
 }
 
 @media (max-width: 480px) {
-  .item-container {
+  .swiper {
     width: 100%;
   }
-  .card-paziente-container {
-    cursor: pointer;
-    flex: 0 0 70%;
+ .swiper-button-next {
+    right: 140px !important;
+    color: black !important;
   }
-}
-
-/* Barra di scorrimento */
-::-webkit-scrollbar {
-  width: 6px; /* Larghezza della barra di scorrimento */
-}
-
-/* Maniglia della barra di scorrimento */
-::-webkit-scrollbar-thumb {
-  background-color: var(--green-secondary); /* Colore della maniglia */
-  border-radius: 3px; /* Bordi arrotondati della maniglia */
-}
-
-/* Traccia della barra di scorrimento */
-::-webkit-scrollbar-track {
-  background-color: #ffffff; /* Colore della traccia */
-}
-/* Barra di scorrimento orizzontale */
-::-webkit-scrollbar-horizontal {
-  height: 10px; /* Altezza della barra di scorrimento */
-}
-
-/* Maniglia della barra di scorrimento orizzontale */
-::-webkit-scrollbar-thumb:horizontal {
-  background-color: #ff0000; /* Colore della maniglia */
-  border-radius: 4px; /* Bordi arrotondati della maniglia */
-}
-
-/* Traccia della barra di scorrimento orizzontale */
-::-webkit-scrollbar-track:horizontal {
-  background-color: #ffffff; /* Colore della traccia */
-  font-weight: ;
+  .swiper-button-prev {
+    left: 140px !important;
+    color: black !important;
+  }
 }
