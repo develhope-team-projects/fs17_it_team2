@@ -6,7 +6,6 @@
   padding-top: 1rem;
   padding-bottom: 2rem;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -20,7 +19,7 @@
 
 
 .footer-image-logo {
-  width: 120%;
+  width: 60%;
   max-width: 22.5rem;
   height: auto;
   margin-top: 0.8rem;
@@ -45,7 +44,7 @@
 .footer-content-item {
   margin: 0.5rem;
   color:#212529 ;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   text-decoration: none;
   --custom-font: 'Lato',
       sans-serif;
@@ -65,13 +64,11 @@
 .socialIcons-footer {
   display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
   margin-right: 5rem;
 }
 
 .footer-icon-social {
-  width: 50%;
-  max-width: 3rem;
+  max-width: 2rem;
   margin: 0.5rem;
 }
 
