@@ -20,15 +20,12 @@ export function Footer() {
           <div className="footer-content-item">TERMS</div>
         </div>
         <div className="copyright-info">
-          <p>
-            Copyright © 2023 KCALendar. All rights reserved.{" "}
-            <span>
-              {" "}
-              <a href="#">Contatti</a> |{" "}
-              <a href="#">Informativa sulla privacy</a> |{" "}
-              <a href="#">Cookie Policy</a>
-            </span>
-          </p>
+          <p>Copyright © 2023 KCALendar. All rights reserved. </p>
+          <span>
+            {" "}
+            <a href="#">Contatti</a> | <a href="#">Informativa sulla privacy</a>{" "}
+            | <a href="#">Cookie Policy</a>
+          </span>
         </div>
       </div>
       <div className="socialIcons-footer">
