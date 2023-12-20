@@ -1,10 +1,12 @@
 :root {
   --green-primary: #38FFC0;
   --orange-primary: #FF664C;
-  --blue-primary: #3A6EB3
+  --blue-primary: #3A6EB3;
   --white-secondary: #F5F5F5;
   --orange-secondary: #FFA07A;
   --green-secondary: #11D194;
   --blu-secondary: #74AEFA;
-
+  --gradient-green-primary:
+   linear-gradient(60deg, #38FFC0 30%,
+   #0b9166 100%  );
 }

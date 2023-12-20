@@ -1,6 +1,11 @@
+@import './colors.css';
+@import './font.css';
+
+
 *{
   font-size: 16px;
   margin: 0;
+  font-family: var(--custom-font);
 }
 
 body{
