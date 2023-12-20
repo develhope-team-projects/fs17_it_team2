@@ -1,71 +1,82 @@
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "../styles/pazienti.css";
-import { Paziente } from "./paziente";
 import "swiper/css/bundle";
 import "swiper/css/controller";
 import "swiper/css/scrollbar";
+import { ButtonScheda } from "./buttonScheda";
+import "../-shared/containerSchede.css"
 
-export function Pazienti() {
+export function ContainerSchede() {
   //logica fetch pazienti dal database
   const utenti = [
     {
-      email: "dddddddddddddddddddddddddddddddddddd..l.com",
+      id: 1,
+      email: "marioCruciani@gmail.com",
       nome: "mario",
-      cognome: "Costainto cruciani",
+      cognome: "cruciani",
     },
     {
+      id: 2,
       email: "marioGialli@gmail.com",
       nome: "mario",
       cognome: "",
     },
 
     {
+      id: 3,
       email: "marioVerdi@gmail.com",
       nome: "mario",
       cognome: "Verdi",
     },
     {
+      id: 4,
       email: "Gino@gmail.com",
       nome: "Gino",
       cognome: "Verdi",
     },
 
     {
+      id: 5,
       email: "AzzOhno@gmail.com",
       nome: "Azz",
       cognome: "Ohno",
     },
     {
+      id: 6,
       email: "lucablu@gmail.com",
       nome: "luca",
       cognome: "blu",
     },
 
     {
+      id: 7,
       email: "buco@gmail.com",
       nome: "luca",
       cognome: "blu",
     },
     {
+      id: 8,
       email: "Mingo@gmail.com",
       nome: "Mingo",
       cognome: "Mitico",
     },
 
     {
+      id: 9,
       email: "buco@gmail.com",
       nome: "Salvatore",
       cognome: "",
     },
     {
-      email: "Mingo@gmail.com",
+      id: 10,
+      email: "Mingo@gmail.comfffffffffffffff",
       nome: "Mingo",
       cognome: "Mitico",
     },
 
     {
+      id: 11,
       email: "buco@gmail.com",
       nome: "luca",
       cognome: "blu",
@@ -76,7 +87,6 @@ export function Pazienti() {
   const cardRowIndex = 2;
   const cardForRow = [];
   for (let i = 0; i < utenti.length; i += cardRowIndex) {
-
     cardForRow.push(utenti.slice(i, i + cardRowIndex));
   }
 
@@ -123,9 +133,9 @@ export function Pazienti() {
         {cardForRow.map((card, index) => (
           <SwiperSlide key={index} tag="div" slot="content-start">
             {card.map((utente) => (
-              <Paziente
-
+              <ButtonScheda
                 key={utente.email}
+                id={utente.id}
                 email={utente.email}
                 name={utente.nome}
                 surname={utente.cognome}
