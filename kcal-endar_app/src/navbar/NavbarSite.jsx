@@ -18,7 +18,7 @@ export function NavbarSite() {
     const [show, setShow] = useState(false);
 
 
-    const isVisible = useMediaQuery({ query: '(max-width: 1279px)' });
+    const isVisible = useMediaQuery({query: '(max-width: 1280px)'});
 
     useEffect(() => {
         setNavCollapse(isVisible);
