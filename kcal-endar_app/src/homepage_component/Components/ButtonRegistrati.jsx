@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./ButtonRegistrati.css";
+import "../Style/ButtonRegistrati.css";
 
 export function ButtonRegistrati() {
   return (

@@ -1,3 +1,5 @@
+@media (max-width: 1920px) {
+
 .title-container {
   display: flex;
   justify-content: flex-end;
@@ -7,11 +9,11 @@
   border: none;
 }
 
-.stepCardBlog {
-  width: 24rem;
-  height: 24rem;
-  border-radius: 1rem;
-}
+ .stepCardBlog {
+   width: 24rem;
+   height: 28rem;
+   border-radius: 1rem;
+ }
 
 .title-container .stepCardBlog {
   margin-bottom: 20px;
@@ -38,13 +40,7 @@
   font-weight: 500;
 }
 
-
-@media (max-width: 1920px) {
-  .stepCardBlog {
-    width: 24rem;
-    height: 28rem;
-    border-radius: 1rem;
-  }
+ 
 }
 
 
