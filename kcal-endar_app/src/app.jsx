@@ -1,3 +1,4 @@
+import { NavbarSite } from "./navbar/NavbarSite";
 import "../src/-common/global.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Login } from "./login&signup_page/components/Login";
@@ -8,11 +9,9 @@ import { Footer } from "./footer/footer";
 export const App = () => {
   return (
     <div>
-      <div>{/* navbar */}</div>
-      {/* Componenti */}
+      <NavbarSite/>
       <Login />
       <Signup />
-      <div>{/* footer */}</div>
       <Footer />
     </div>
   );
