@@ -1,57 +1,61 @@
+@media (max-width: 1920px) {
+
 .main-container {
-  background-color: #CDECDC;
-  padding: 5rem 1rem 8rem;
-  width: 100%;
-}
+    background-color: #CDECDC;
+    padding: 5rem 1rem 8rem;
+    width: 100%;
+  }
 
-.card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-  padding-top: 1rem;
-  flex-wrap: wrap;
-  padding: 20px;
-}
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
 
-.card-container .stepCardShadow:first-child {
-  margin-left: 20px;
-}
+  .card-container .stepCardShadow:first-child {
+    margin-left: 20px;
+  }
 
-.card-container .card {
-  margin-right: 20px;
-}
+  .card-container .card {
+    margin-right: 20px;
+  }
 
-.card-container .card .card-body {
-  padding: 1.6rem;
-}
+  .card-container .card .card-body {
+    padding: 1.6rem;
+  }
 
-.card-container .card .card-title {
-  padding: 1.6rem;
-  font-size: 2.3rem;
-  text-align: center;
-}
+  .card-container .card .card-title {
+    padding: 1.6rem;
+    font-size: 2.3rem;
+    text-align: center;
+  }
 
-.card-container .card .card-text {
-  padding: 1.6rem;
-  font-size: 1.8rem;
-  margin-top: -5px;
-  text-align: center;
-}
+  .card-container .card .card-text {
+    padding: 1.6rem;
+    font-size: 1.8rem;
+    margin-top: -5px;
+    text-align: center;
+  }
 
-.calendarIcon,
-.nutritionistIcon,
-.recipeIcon {
-  width: 4rem;
-  height: 4rem;
-}
+  .calendarIcon,
+  .nutritionistIcon,
+  .recipeIcon {
+    width: 4rem;
+    height: 4rem;
+  }
 
-.stepCardShadow {
-  width: 60rem;
-  height: 20rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
+  .stepCardShadow {
+    width: 60rem;
+    height: 20rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
 
+
+}
 
 @media (max-width: 1280px) {
   .card-container {

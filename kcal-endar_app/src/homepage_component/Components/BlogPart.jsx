@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./BlogPart.css";
+import "../Style/BlogPart.css";
 
 export function BlogPart() {
   return (

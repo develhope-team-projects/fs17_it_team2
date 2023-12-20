@@ -10,6 +10,7 @@ import { Login } from "./login_component/Login"
 import { Footer } from "./footer/footer";
 import "../src/-common/global.css";
 import { Signup } from "./signup_component/SignUp";
+import { StepsAndBlog } from "./homepage_component/Components/StepsAndBlog";
 
 export const App = () => {
   return (
@@ -24,6 +25,7 @@ export const App = () => {
         <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
         <Route path="/ricette" element={<Ricette />} />
       </Routes>
+      <StepsAndBlog/>
     </BrowserRouter>
     <Footer />
     </div>

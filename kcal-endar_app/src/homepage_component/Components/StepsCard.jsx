@@ -1,12 +1,12 @@
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./ComponentStepCard.css";
-import calendarIcon from "../-assets/icons/calendarIcon.png";
-import nutritionistIcon from "../-assets/icons/nutritionistIcon.png";
-import recipeIcon from "../-assets/icons/recipeIcon.png";
-import { ButtonRegistrati } from "./ButtonRegistrati";
+import calendarIcon from "../../-assets/icons/calendarIcon.png";
+import nutritionistIcon from "../../-assets/icons/nutritionistIcon.png";
+import recipeIcon from "../../-assets/icons/recipeIcon.png";
+import {ButtonRegistrati} from "../Components/ButtonRegistrati";
+import "../Style/StepsCard.css";
 
-export function ComponentStepCard() {
+export function StepsCard() {
   return (
     <div className="main-container">
       <div className="card-container">
