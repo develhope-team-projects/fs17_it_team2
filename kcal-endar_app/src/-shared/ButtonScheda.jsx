@@ -1,4 +1,4 @@
-import "../-shared/styles/buttonScheda.css";
+import "../-shared/components_styles/buttonScheda.css";
 import Card from "react-bootstrap/Card";
 
 export function ButtonScheda({email, name, surname, date}) {

@@ -4,9 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import "swiper/css/controller";
 import "swiper/css/scrollbar";
-import { ButtonScheda } from "./buttonScheda";
+import { ButtonScheda } from "./ButtonScheda";
 /* css */
-import "../-shared/styles/containerSchede.css"
+import "./components_styles/containerSchede.css";
 
 export function ContainerSchede() {
   //logica fetch pazienti dal database
