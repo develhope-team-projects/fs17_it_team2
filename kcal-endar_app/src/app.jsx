@@ -7,9 +7,9 @@ import {UserDashboard} from "./user-dashboard_component/UserDashboard"
 import {DoctorDashboard} from "./doctor-dashboard_component/DoctorDashboard"
 import {Ricette} from "./ricette_component/Ricette"
 import { Login } from "./login_component/Login"
-import { SignUp } from "./signup_component/SignUp"
 import { Footer } from "./footer/footer";
 import "../src/-common/global.css";
+import { Signup } from "./signup_component/SignUp";
 
 export const App = () => {
   return (
@@ -19,7 +19,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
         <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
         <Route path="/ricette" element={<Ricette />} />
