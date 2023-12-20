@@ -6,5 +6,7 @@
   --orange-secondary: #FFA07A;
   --green-secondary: #11D194;
   --blu-secondary: #74AEFA;
-
+  --gradient-green-primary:
+   linear-gradient(60deg, #38FFC0 30%,
+   #0b9166 100%  );
 }
