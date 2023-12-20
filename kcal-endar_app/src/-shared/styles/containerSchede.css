@@ -1,0 +1,24 @@
+.swiper {
+  background-color: rgb(255, 255, 255);
+  margin-left: 0 !important;
+  height: auto;
+  padding-bottom: 0.5rem !important;
+  width: 100%;
+}
+
+.swiper-pagination {
+  bottom: var(--swiper-pagination-bottom, -5px) !important;
+}
+
+.swiper-button-next,
+.swiper-button-next:after {
+  color: black !important;
+  top: var(--swiper-navigation-top-offset, 15%);
+  font-size: 30px !important;
+}
+.swiper-button-prev,
+.swiper-button-prev:after {
+  color: black !important;
+  top: var(--swiper-navigation-top-offset, 15%);
+  font-size: 30px !important;
+}

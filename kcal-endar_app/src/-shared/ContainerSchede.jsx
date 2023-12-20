@@ -5,7 +5,8 @@ import "swiper/css/bundle";
 import "swiper/css/controller";
 import "swiper/css/scrollbar";
 import { ButtonScheda } from "./buttonScheda";
-import "../-shared/containerSchede.css"
+/* css */
+import "../-shared/styles/containerSchede.css"
 
 export function ContainerSchede() {
   //logica fetch pazienti dal database
@@ -84,7 +85,7 @@ export function ContainerSchede() {
   ];
 
   //funzione per calcolare quante card voglio per riga
-  const cardRowIndex = 2;
+  const cardRowIndex = 1;
   const cardForRow = [];
   for (let i = 0; i < utenti.length; i += cardRowIndex) {
     cardForRow.push(utenti.slice(i, i + cardRowIndex));
@@ -95,22 +96,29 @@ export function ContainerSchede() {
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         breakpoints={{
+          2540: {
+            slidesPerView: 9,
+          },
           1920: {
+            slidesPerView: 7,
+          },
+
+          1440: {
+            slidesPerView: 6,
+          },
+
+          1280: {
             slidesPerView: 5,
           },
 
-          1100: {
-            slidesPerView: 3,
-          },
-
           1000: {
-            slidesPerView: 3,
+            slidesPerView: 4,
           },
 
           600: {
             slidesPerView: 3,
           },
-          500: {
+          480: {
             slidesPerView: 2,
           },
 
@@ -123,7 +131,6 @@ export function ContainerSchede() {
           prevEl: ".swiper-button-prev",
         }}
         spaceBetween={0}
-        slidesPerView={2}
         pagination={{
           clickable: true,
         }}
@@ -135,7 +142,6 @@ export function ContainerSchede() {
             {card.map((utente) => (
               <ButtonScheda
                 key={utente.email}
-                id={utente.id}
                 email={utente.email}
                 name={utente.nome}
                 surname={utente.cognome}

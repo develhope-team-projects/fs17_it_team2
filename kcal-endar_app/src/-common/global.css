@@ -1,18 +1,54 @@
-@import './colors.css';
-@import './font.css';
-@import './media-query.css';
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-
-*{
-  font-size: 16px;
-  margin: 0;
-  font-family: var(--custom-font)
-  ;
+/* ---------------------
+ generic rules
+ ----------------------- */
+:root {
+  --custom-font: "Lato", sans-serif;
 }
 
-body{
+* {
+  font-size: 16px;
+  margin: 0;
+  font-family: var(--custom-font);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ---------------------
+COLORS
+----------------------- */
+:root {
+  --green-primary: #38ffc0;
+  --orange-primary: #ff664c;
+  --blue-primary: #3a6eb3;
+  --white-secondary: #f5f5f5;
+  --orange-secondary: #ffa07a;
+  --green-secondary: #11d194;
+  --blu-secondary: #74aefa;
+  --gradient-green-blue: linear-gradient(
+    45deg,
+    #38ffc0 30%,
+    #74aefa 80%,
+    #11d194 99%
+  );
+}
+
+/* ---------------------
+MEDIA QUERIES 
+------------------*/
+:root {
+  --mobile-ah: 480px;
+  --tablet: 768px;
+  --notebook: 1280px;
+  --monitor: 1920px;
+  --4k: 2560px;
+}
+
+/* ---------------------
+ICONS&LOGO SIZES
+----------------------- */
+:root {
+  --mini-logo: 15px;
+}
