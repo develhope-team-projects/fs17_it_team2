@@ -1,18 +1,16 @@
-@media (max-width: 1920px) {
 
 .title-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-right: 7rem;
-  margin-top: 2rem;
   border: none;
 }
 
  .stepCardBlog {
    width: 24rem;
-   height: 28rem;
    border-radius: 1rem;
+   padding: 1rem;
  }
 
 .title-container .stepCardBlog {
@@ -30,7 +28,7 @@
 
 .title-container .card .card-title {
   margin: 0;
-  font-size: 4rem;
+  font-size: 2rem;
   text-align: center;
   font-weight: 400;
 }
@@ -41,7 +39,7 @@
 }
 
  
-}
+
 
 
 @media (max-width: 1280px) {
