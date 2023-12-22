@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import "../-shared/components_styles/loginSignup.css";
 import { UseSignup } from "./UseSignup";
 
@@ -55,9 +56,9 @@ export function Signup() {
             La password deve contenere almeno 8 caratteri tra cui un numero e un
             carattere speciale
           </p>
-          <button id="signup-button" onClick={onSignup}>
+          <Button id="signup-button" onClick={onSignup}>
             Registrati
-          </button>{" "}
+          </Button>{" "}
         </form>
         <p className="signup-error-message">{errorsSignup.invalidName}</p>
         <p className="signup-error-message">{errorsSignup.invalidSurname}</p>
