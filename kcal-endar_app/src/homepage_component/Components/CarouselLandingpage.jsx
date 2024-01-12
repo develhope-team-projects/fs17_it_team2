@@ -12,7 +12,7 @@ export function CarouselLandingpage() {
         <Carousel bsPrefix='carousel'className='carousel-container'>
             <Carousel.Item interval={7000} bsPrefix='carousel-item' className='carousel-item'>
                 <img src={image0} alt='' className="carousel-image" />
-                <Carousel.Caption>
+                <Carousel.Caption id='carousel-box-text'>
                     <div id='carousel-text'>
                         Frase motivazionale sull'utilizzo di KCALendar.
                     </div>
@@ -20,7 +20,7 @@ export function CarouselLandingpage() {
             </Carousel.Item>
             <Carousel.Item interval={7000} bsPrefix='carousel-item' id="carousel-style">
                 <img src={image1} alt="Kcalendar" className="carousel-image" />
-                <Carousel.Caption>
+                <Carousel.Caption id='carousel-box-text1'>
                     <div id='carousel-text'>
                         Qualcosa del tipo "non servirà più segnarsi le cose sul calendario perchè lo farà KCALendar per te!"
                     </div>
@@ -28,7 +28,7 @@ export function CarouselLandingpage() {
             </Carousel.Item>
             <Carousel.Item interval={7000} bsPrefix='carousel-item' id="carousel-style">
                 <img src={image2} alt="Kcalendar" className="carousel-image" />
-                <Carousel.Caption>
+                <Carousel.Caption id='carousel-box-text2'>
                     <div id='carousel-text'>
                         Sempre disponibile i nostri dietologi per aiutarti nei momenti no.
                     </div>
