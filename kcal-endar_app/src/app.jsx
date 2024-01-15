@@ -9,12 +9,14 @@ import {Ricette} from "./ricette_component/Ricette"
 import { Login } from "./login_component/Login"
 import { SignUp } from "./signup_component/SignUp"
 import { Footer } from "./footer/footer";
+import { PieChart } from "./pie-chart/PieChart"
 import "../src/-common/global.css";
 
 export const App = () => {
   return (
-    <div>   
+    <div>
     <NavbarSite/>
+    <PieChart/>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
