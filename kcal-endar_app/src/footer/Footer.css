@@ -1,5 +1,5 @@
 .footer {
-  background-color: #dcdcd5;
+  background-color: var(--light-grey) /* var(--green-yellow) */;
   text-align: center;
   margin: 0 auto;
   align-items: center;
