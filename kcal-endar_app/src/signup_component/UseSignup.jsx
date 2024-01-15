@@ -1,9 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 
 export function UseSignup() {
   const [dataSignup, setDataSignup] = useState({
-    nome: "",
-    cognome: "",
+    name: "",
+    surname: "",
     username: "",
     email: "",
     password: "",
@@ -26,7 +27,7 @@ export function UseSignup() {
 
   const isValid = (value, regex) => regex.test(value);
 
-  function handlerChange(e) {
+   function handlerChange(e) {
     const { name, value } = e.target;
     setDataSignup((prevData) => ({
       ...prevData,
@@ -35,11 +36,11 @@ export function UseSignup() {
     value === "" ? setErrorsSignup({}) : "";
   }
 
-  const handlerBtn = (evt) => {
+  const handlerBtn = async (evt) => {
     evt.preventDefault();
-    const { nome, cognome, username, email, password } = dataSignup;
+    const { name, surname, username, email, password } = dataSignup;
 
-    setErrorsSignup({
+    const newError = {
       invalidUsername:
         username && !isValid(username, regexPatterns.alphanumeric)
           ? "ATTENZIONE: L'username non può contenere caratteri speciali (es:£, $, %, &, *, @)"
@@ -53,14 +54,28 @@ export function UseSignup() {
           ? "ATTENZIONE: inserisci una password valida"
           : "",
       invalidName:
-        nome && !isValid(nome, regexPatterns.alpha)
+        name && !isValid(name, regexPatterns.alpha)
           ? "ATTENZIONE: Il nome non può contenere numeri e caratteri speciali (es:£, $, %, &, *, @)"
           : "",
       invalidSurname:
-        cognome && !isValid(cognome, regexPatterns.alpha)
+        surname && !isValid(surname, regexPatterns.alpha)
           ? "ATTENZIONE: Il cognome non può contenere numeri e caratteri speciali (es:£, $, %, &, *, @)"
           : "",
-    });
+    };
+    setErrorsSignup(newError);
+    const areData = Object.values(dataSignup).every((value) => value !== "");
+    const noErrors = Object.values(errorsSignup).every((value) => value === "");
+
+    // verifica se input sono digitati correttamente
+    if (areData && noErrors) {
+
+      try {
+       const res = await axios.post("http://localhost:3000/signup", dataSignup)
+       console.log(res.data)
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
   };
 
   return {

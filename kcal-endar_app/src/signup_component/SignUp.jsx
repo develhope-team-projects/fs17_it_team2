@@ -13,18 +13,18 @@ export function Signup() {
           <div className="double-inp-signup-container">
             <div className="label-inp-signup-container">
               <input
-                name="nome"
+                name="name"
                 onChange={onInputChangeSignup}
                 type="text"
-                value={dataSignup.nome}
+                value={dataSignup.name}
                 placeholder="nome"
               />
             </div>
             <input
-              name="cognome"
+              name="surname"
               onChange={onInputChangeSignup}
               type="text"
-              value={dataSignup.cognome}
+              value={dataSignup.surname}
               placeholder="cognome"
             />
           </div>

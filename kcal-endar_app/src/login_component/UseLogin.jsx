@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export function UseLogin() {
   const [dataLogin, setDataLogin] = useState({
@@ -24,11 +25,21 @@ export function UseLogin() {
     const { usernameEmail, password } = dataLogin;
 
     setErrorsLogin({
-      invalidUsername: //inserire condizione
-      !usernameEmail? "L'username o l'email non esistono" : '',
-      invalidPassword: //inserire condizione
-      !password? 'password non corretta' : '' ,
+      invalidUsername: !usernameEmail
+        ? "L'username o l'email non esistono"
+        : "",
+      invalidPassword: !password ? "password non corretta" : "",
     });
+
+    if (dataLogin) {
+      try {
+        axios
+          .post("http://localhost:3000/login", dataLogin)
+          .then((res) => console.log(res.data));
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
   };
 
   return {

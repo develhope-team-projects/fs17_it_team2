@@ -33,8 +33,8 @@ export function Login() {
           <h6>non hai un account?</h6>
           <Link to="../../signup">Registrati</Link>
          
-          <p>{errorsLogin.usernameEmail}</p>
-          <p>{errorsLogin.password}</p>
+          <p>{errorsLogin.invalidUsernameEmail}</p>
+          <p>{errorsLogin.invalidPassword}</p>
         </form>
       </div>
     </div>
