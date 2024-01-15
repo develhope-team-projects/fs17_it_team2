@@ -1,4 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
+import { CarouselAndWhat } from "./Components/CarouselAndWhat";
+import { StepsAndBlog } from "./Components/StepsAndBlog";
 
 export function Homepage() {
   const navigate = useNavigate()
@@ -17,6 +19,9 @@ export function Homepage() {
       <button onClick={handleSignUp}>Registrati</button>
       <br/>
       <Link to="/ricette">Guarda le ricette!</Link>
+
+      <CarouselAndWhat />
+      <StepsAndBlog />
     </div>
   )
 }

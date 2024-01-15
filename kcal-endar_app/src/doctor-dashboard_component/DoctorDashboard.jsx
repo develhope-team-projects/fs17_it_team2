@@ -1,6 +1,10 @@
-export function DoctorDashboard() {
+import { ContainerSchede } from "../-shared/ContainerSchede";
+import "../doctor-dashboard_component/styles/doctorDashboard.css";
 
+export const DoctorDashboard = () => {
   return (
-    <h1>DOCTOR DASHBOARD</h1>
-  )
-}
+    <div className="doctor-dashboard-container">
+      <ContainerSchede />
+    </div>
+  );
+};

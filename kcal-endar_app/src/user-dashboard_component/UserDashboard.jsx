@@ -1,6 +1,12 @@
+import { UserDashboardCalendar } from "./Components/UserDashboardCalendar";
+
 export function UserDashboard() {
 
   return (
-    <h1>USER DASHBOARD</h1>
+    <div className="user-dashboard-container">
+      <h1>USER DASHBOARD</h1>
+
+      <UserDashboardCalendar />
+    </div>
   )
 }

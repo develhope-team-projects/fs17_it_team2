@@ -3,14 +3,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import '../navbar/navbarStyle-style.css'
-import '../-common/colors.css';
-import '../-common/font.css';
 import logo from '../-assets/logo/Logo.name.png';
 import avatar from '../-assets/icons/user-avatar-orange.svg';
 import menu from '../-assets/icons/menu.svg'
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive'
+import '../navbar/navbarStyle-style.css'
 
 export function NavbarSite() {
 
@@ -18,7 +16,7 @@ export function NavbarSite() {
     const [show, setShow] = useState(false);
 
 
-    const isVisible = useMediaQuery({ query: '(max-width: 1279px)' });
+    const isVisible = useMediaQuery({query: '(max-width: 1280px)'});
 
     useEffect(() => {
         setNavCollapse(isVisible);

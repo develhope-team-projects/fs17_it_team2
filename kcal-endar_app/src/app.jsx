@@ -1,20 +1,21 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { NavbarSite } from "./navbar/NavbarSite";
-import {Homepage} from "./homepage_component/Homepage"
-import {UserDashboard} from "./user-dashboard_component/UserDashboard"
-import {DoctorDashboard} from "./doctor-dashboard_component/DoctorDashboard"
-import {Ricette} from "./ricette_component/Ricette"
+import { Homepage } from "./homepage_component/Homepage"
+import { UserDashboard } from "./user-dashboard_component/UserDashboard"
+import { DoctorDashboard } from "./doctor-dashboard_component/DoctorDashboard"
+import { Ricette } from "./ricette_component/Ricette"
 import { Login } from "./login_component/Login"
-import { SignUp } from "./signup_component/SignUp"
 import { Footer } from "./footer/footer";
 import { PieChart } from "./pie-chart/PieChart"
+import { Signup } from "./signup_component/SignUp";
+
 import "../src/-common/global.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const App = () => {
   return (
     <div>
+
     <NavbarSite/>
     <PieChart/>
     <BrowserRouter>
@@ -28,6 +29,7 @@ export const App = () => {
       </Routes>
     </BrowserRouter>
     <Footer />
+
     </div>
   )
 };

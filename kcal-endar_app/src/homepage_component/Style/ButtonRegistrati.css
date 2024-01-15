@@ -1,0 +1,14 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.button-container-registrati {
+  border-radius: 3rem;
+  width: 8rem;
+  text-align: center;
+  line-height: 2rem;
+}
