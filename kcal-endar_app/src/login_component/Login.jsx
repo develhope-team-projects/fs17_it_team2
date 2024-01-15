@@ -31,7 +31,7 @@ export function Login() {
             Accedi
           </Button>{" "}
           <h6>non hai un account?</h6>
-          <Link to="../../signup">Registrati</Link>
+          <Link to="../../signup" className="login-link">Registrati</Link>
          
           <p>{errorsLogin.usernameEmail}</p>
           <p>{errorsLogin.password}</p>

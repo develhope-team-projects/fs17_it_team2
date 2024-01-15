@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }
 
 .button-container-registrati {
@@ -11,4 +10,12 @@
   width: 8rem;
   text-align: center;
   line-height: 2rem;
+  border: none;
+  background-color: var(--tangerine);
+}
+
+.button-container-registrati:hover {
+  background-color: var(--tangerine);
+  transform: scale(1.1);
+  transition: 500ms;
 }

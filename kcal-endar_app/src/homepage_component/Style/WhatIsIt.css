@@ -10,11 +10,12 @@
         max-width: 100%;
     }
 
-    .whatisit-card {
+    #whatisit-card {
         display: flex;
         align-items: center;
-        max-width: 100rem !important;
-        padding: 2rem;
+        max-width: 200rem !important;
+        max-height: 100rem !important;
+        padding: 1.5rem;
     }
 
     .whatisit-card-body {
@@ -28,8 +29,8 @@
     .whatisit-image {
         display: flex;
         justify-content: flex-start;
-        width: 20rem;
-        height: 14rem;
+        width: 25rem;
+        height: 19rem;
     }
 
     .whatisit-text {
@@ -55,8 +56,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 15rem;
-        height: 13rem;
+        width: 20rem;
     }
 
     .whatisit-card {

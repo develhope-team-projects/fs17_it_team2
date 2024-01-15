@@ -14,12 +14,12 @@ export function Homepage() {
   }
   return (
     <div>
-      <h1>HOMEPAGE</h1>
+      {/* <h1>HOMEPAGE</h1>
       <button onClick={handleLogin}>Accedi</button>
       <button onClick={handleSignUp}>Registrati</button>
       <br/>
       <Link to="/ricette">Guarda le ricette!</Link>
-
+ */}
       <CarouselAndWhat />
       <StepsAndBlog />
     </div>
