@@ -46,7 +46,6 @@
 }
 
 #signup-button {
-<<<<<<< HEAD
   width: 120px;
   height: 40px;
   border-radius: 1rem;
@@ -57,10 +56,6 @@
 #signup-button:hover {
   background-color: #163a5b;
   border: none;
-=======
-  width: 100px;
-  margin-top: 1rem;
->>>>>>> development
 }
 
 .signup-container {
