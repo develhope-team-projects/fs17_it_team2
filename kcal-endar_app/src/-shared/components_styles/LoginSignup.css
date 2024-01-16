@@ -1,12 +1,15 @@
 .loginSignup-container {
   display: flex;
-  background-image: var(--gradient-green-blue);
+  background-color: #feae34;
   padding-left: 3rem;
   padding-right: 3rem;
   padding-top: 3rem;
 }
+
 .loginSignup-container h2 {
   text-align: center;
+  font-weight: bold;
+  font-size: 40px;
 }
 
 .loginSignup-container form {
@@ -23,14 +26,36 @@
   border: none;
   box-shadow: 0px 1px 5px;
   max-width: 180px;
+  padding: 0.5rem
 }
+
 #login-button {
-  width: 100px;
+  width: 120px;
+  height: 40px;
   margin-inline: auto;
-}
-#signup-button {
-  width: 100px;
+  border-radius: 1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  background-color: var(--aviation-blue);
+}
+
+#login-button:hover {
+  background-color: #163a5b;
+  border: none;
+}
+
+#signup-button {
+  width: 120px;
+  height: 40px;
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--aviation-blue);
+}
+
+#signup-button:hover {
+  background-color: #163a5b;
+  border: none;
 }
 
 .signup-container {
@@ -38,14 +63,23 @@
   flex-direction: column;
   align-items: center;
   margin-inline: auto;
+  margin-top: 15rem;
+  padding: 2rem;
+  border-radius: 7%;
+  gap: 1.5rem;
 }
 
 .login-container {
-  width: 50%;
+  width: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-inline: auto;
+  margin-top: 15rem;
+  margin-bottom: 10rem;
+  padding: 2rem;
+  border-radius: 7%;
+  gap: 1.5rem;
 }
 
 .double-inp-signup-container {
@@ -65,7 +99,18 @@
 #password-reminder-text {
   width: 80%;
   font-size: 13px;
-  
+
+}
+
+.login-link {
+  color: var(--aviation-blue);
+  text-decoration: none;
+}
+
+.login-link:hover {
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: 500ms;
 }
 
 @media (max-width: 768px) {

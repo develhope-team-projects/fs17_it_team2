@@ -14,7 +14,7 @@ export function CarouselLandingpage() {
                 <img src={image0} alt='' className="carousel-image" />
                 <Carousel.Caption id='carousel-box-text'>
                     <div id='carousel-text'>
-                        Frase motivazionale sull'utilizzo di KCALendar.
+                        Con KCALendar, ogni caloria conta e ogni passo verso la salute è un successo!
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -22,7 +22,7 @@ export function CarouselLandingpage() {
                 <img src={image1} alt="Kcalendar" className="carousel-image" />
                 <Carousel.Caption id='carousel-box-text1'>
                     <div id='carousel-text'>
-                        Qualcosa del tipo "non servirà più segnarsi le cose sul calendario perchè lo farà KCALendar per te!"
+                        Dimentica la penna e la carta, il tuo diario alimentare è ora digitale e connesso con i nostri specialisti.
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -30,7 +30,7 @@ export function CarouselLandingpage() {
                 <img src={image2} alt="Kcalendar" className="carousel-image" />
                 <Carousel.Caption id='carousel-box-text2'>
                     <div id='carousel-text'>
-                        Sempre disponibile i nostri dietologi per aiutarti nei momenti no.
+                        Disponibilità h24 dei nostri esperti, per guidarti in ogni passo del tuo percorso alimentare.
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>

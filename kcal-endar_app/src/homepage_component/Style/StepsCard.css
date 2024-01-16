@@ -3,7 +3,8 @@
 }
 
 .main-container {
-  background-color: #cdecdc;
+  /* background-image: linear-gradient(5deg, var(--tangerine) 10%, var(--green-yellow) 50%); */
+  background-color: var(--aviation-blue);
   padding: 2rem;
   width: 100%;
 }
@@ -29,14 +30,16 @@
 
 .card-container .card .card-title {
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
+  font-weight: bold;
 }
 
 .card-container .card .card-text {
   padding: 1.9rem;
   margin-top: -5px;
   text-align: center;
+  font-size: 1.7rem;
 }
 
 .calendarIcon,
