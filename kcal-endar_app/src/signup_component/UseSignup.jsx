@@ -18,6 +18,9 @@ export function UseSignup() {
     invalidSurname: "",
   });
 
+   const [isCheckedUser, setIsCheckedUser] = useState(false);
+   const [isCheckedDoc, setIsCheckedDoc] = useState(false);
+
   const regexPatterns = {
     alpha: /^[a-zA-Z]/,
     alphanumeric: /^[a-zA-Z0-9_.]+$/,
@@ -26,7 +29,23 @@ export function UseSignup() {
   };
 
   const isValid = (value, regex) => regex.test(value);
+  
+  // funzioni per scegliere tipologia utente che si registra
+   function handleCheckboxUserChange() {
+     setIsCheckedUser(!isCheckedUser);
+     if (isCheckedDoc) {
+       setIsCheckedDoc(false);
+     }
+   }
 
+   function handleCheckboxDocChange() {
+     setIsCheckedDoc(!isCheckedDoc);
+     if (isCheckedUser) {
+       setIsCheckedUser(false);
+     }
+   }
+
+   // funzione digitazione input
    function handlerChange(e) {
     const { name, value } = e.target;
     setDataSignup((prevData) => ({
@@ -36,6 +55,7 @@ export function UseSignup() {
     value === "" ? setErrorsSignup({}) : "";
   }
 
+   // funzione al click sul button
   const handlerBtn = async (evt) => {
     evt.preventDefault();
     const { name, surname, username, email, password } = dataSignup;
@@ -68,11 +88,17 @@ export function UseSignup() {
 
     // verifica se input sono digitati correttamente
     if (areData && noErrors) {
-
       try {
-       const res = await axios.post("http://localhost:3000/signup", dataSignup)
-       console.log(res.data)
-      } catch (error) {
+      if(isCheckedUser) {
+      const res = await axios.post(
+          "http://localhost:3000/signup/user", dataSignup)
+           console.log(res.data)
+      } else if(isCheckedDoc) {
+        const res = await axios.post(
+          "http://localhost:3000/signup/doc", dataSignup);
+           console.log(res.data);
+      }
+    } catch (error) {
         console.error(error.message);
       }
     }
@@ -83,5 +109,9 @@ export function UseSignup() {
     errorsSignup,
     onSignup: handlerBtn,
     onInputChangeSignup: handlerChange,
+    isCheckedUser,
+    isCheckedDoc,
+    onInputUserType: handleCheckboxUserChange,
+    onInputDocType: handleCheckboxDocChange
   };
 }

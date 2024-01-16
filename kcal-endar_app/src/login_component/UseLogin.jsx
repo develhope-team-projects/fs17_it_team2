@@ -1,9 +1,11 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 import axios from "axios";
 
 export function UseLogin() {
   const [dataLogin, setDataLogin] = useState({
-    usernameEmail: "",
+    username: "",
+    email: "",
     password: "",
   });
 
@@ -11,6 +13,8 @@ export function UseLogin() {
     invalidUsernameEmail: "",
     invalidPassword: "",
   });
+
+  const navigateLogin = useNavigate()
 
   function handlerChange(e) {
     const { name, value } = e.target;
@@ -20,27 +24,52 @@ export function UseLogin() {
     }));
   }
 
+
   const handlerBtn = (evt) => {
     evt.preventDefault();
-    const { usernameEmail, password } = dataLogin;
+    const { email, password } = dataLogin;
 
     setErrorsLogin({
-      invalidUsername: !usernameEmail
-        ? "L'username o l'email non esistono"
+      invalidUsernameEmail:!email
+        ? "l'email non esiste"
         : "",
       invalidPassword: !password ? "password non corretta" : "",
     });
 
-    if (dataLogin) {
-      try {
-        axios
-          .post("http://localhost:3000/login", dataLogin)
-          .then((res) => console.log(res.data));
-      } catch (error) {
-        console.error(error.message);
-      }
+    if ( email && password) {
+      const apiUrl = `http://localhost:3000/login`;
+      axios
+        .post(apiUrl, dataLogin)
+        .then((res) => {
+          console.log(res.data.message);
+
+          // Verifica il tipo di utente (user o medico) e reindirizza di conseguenza
+          const userType = res.data.userType;
+
+          if (userType === "user") {
+            navigateLogin("/user-dashboard");
+          } else if (userType === "doc") {
+            navigateLogin("/doctor-dashboard");
+          } else {
+            console.error(res.data.message);
+          }
+        })
+        .catch((error) => {
+          if (error.response) {
+            // La richiesta è stata effettuata e il server ha risposto con uno stato diverso da 2xx
+            console.error("Errore lato server:", error.response.data.message);
+          } else if (error.request) {
+            // La richiesta è stata effettuata, ma non è stata ricevuta alcuna risposta
+            console.error("Nessuna risposta dal server");
+          } else {
+            // Altri tipi di errori
+            console.error("Errore durante la richiesta:", error.message);
+          }
+        });
+
     }
   };
+
 
   return {
     dataLogin,
