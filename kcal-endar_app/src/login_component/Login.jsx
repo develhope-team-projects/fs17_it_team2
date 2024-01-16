@@ -13,11 +13,11 @@ export function Login() {
         <h2>Login</h2>
         <form action="">
           <input
-            name="usernameEmail"
+            name="email"
             onChange={onInputChangeLogin}
             type="text"
-            value={dataLogin.usernameEmail}
-            placeholder="username/email
+            value={dataLogin.email}
+            placeholder="email
             "
           />
           <input
@@ -33,8 +33,8 @@ export function Login() {
           <h6>non hai un account?</h6>
           <Link to="../../signup" className="login-link">Registrati</Link>
          
-          <p>{errorsLogin.usernameEmail}</p>
-          <p>{errorsLogin.password}</p>
+          <p>{errorsLogin.invalidUsername}</p>
+          <p>{errorsLogin.invalidPassword}</p>
         </form>
       </div>
     </div>

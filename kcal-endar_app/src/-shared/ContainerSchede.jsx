@@ -150,8 +150,6 @@ export function ContainerSchede() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="swiper-button-next"></div>
-      <div className="swiper-button-prev"></div>
     </>
   );
 }

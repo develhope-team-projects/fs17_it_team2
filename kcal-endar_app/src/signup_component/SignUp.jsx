@@ -1,9 +1,11 @@
 import { Button } from "react-bootstrap";
 import "../-shared/components_styles/loginSignup.css";
 import { UseSignup } from "./UseSignup";
+import { useState } from "react";
 
-export function Signup() {
-  const { dataSignup, errorsSignup, onSignup, onInputChangeSignup } =
+export function Signup() { 
+
+  const { dataSignup, errorsSignup, onSignup, onInputChangeSignup, isCheckedDoc, isCheckedUser, onInputDocType, onInputUserType } =
     UseSignup();
   return (
     <div className="loginSignup-container">
@@ -13,18 +15,18 @@ export function Signup() {
           <div className="double-inp-signup-container">
             <div className="label-inp-signup-container">
               <input
-                name="nome"
+                name="name"
                 onChange={onInputChangeSignup}
                 type="text"
-                value={dataSignup.nome}
+                value={dataSignup.name}
                 placeholder="nome"
               />
             </div>
             <input
-              name="cognome"
+              name="surname"
               onChange={onInputChangeSignup}
               type="text"
-              value={dataSignup.cognome}
+              value={dataSignup.surname}
               placeholder="cognome"
             />
           </div>
@@ -56,7 +58,25 @@ export function Signup() {
             La password deve contenere almeno 8 caratteri tra cui un numero e un
             carattere speciale
           </p>
-          <Button id="signup-button" onClick={onSignup}>
+          <div id="userType-container">
+            <div className="userType-labelAndInp">
+              <label htmlFor="">utente</label>
+              <input
+                type="checkbox"
+                checked={isCheckedUser}
+                onChange={onInputUserType}
+              />
+            </div>
+            <div className="userType-labelAndInp">
+              <label htmlFor="">nutrizionista</label>
+              <input
+                type="checkbox"
+                checked={isCheckedDoc}
+                onChange={onInputDocType}
+              />
+            </div>
+          </div>
+          <Button type="submit" id="signup-button" onClick={onSignup}>
             Registrati
           </Button>{" "}
         </form>
