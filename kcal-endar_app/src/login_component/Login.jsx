@@ -27,7 +27,7 @@ export function Login() {
             value={dataLogin.password}
             placeholder="password"
           />
-          <Button id="login-button" onClick={onLogin}>
+          <Button type="submit" id="login-button" onClick={onLogin}>
             Accedi
           </Button>{" "}
           <h6>non hai un account?</h6>
