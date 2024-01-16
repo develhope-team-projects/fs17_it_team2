@@ -6,25 +6,30 @@ import { DoctorDashboard } from "./doctor-dashboard_component/DoctorDashboard"
 import { Ricette } from "./ricette_component/Ricette"
 import { Login } from "./login_component/Login"
 import { Footer } from "./footer/footer";
+import { PieChart } from "./pie-chart/PieChart"
 import { Signup } from "./signup_component/SignUp";
+
 import "../src/-common/global.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const App = () => {
   return (
     <div>
-      <NavbarSite />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-          <Route path="/ricette" element={<Ricette />} />
-        </Routes>
-      </BrowserRouter>
-      <Footer />
+
+    <NavbarSite/>
+    <PieChart/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+        <Route path="/ricette" element={<Ricette />} />
+      </Routes>
+    </BrowserRouter>
+    <Footer />
+
     </div>
   )
 };
