@@ -1,6 +1,11 @@
 .loginSignup-container {
   display: flex;
-  background-color: #feae34;
+  background-image: url(../../-assets/media/food-frame.png),
+    linear-gradient(320deg, var(--light-pink), var(--light-yellow), var(--light-blue));
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  /* background-color: #feae34; */
   padding-left: 3rem;
   padding-right: 3rem;
   padding-top: 3rem;
@@ -41,7 +46,7 @@
 }
 
 #login-button:hover {
-  background-color: #163a5b;
+  background-color: var(--dark-avio-blue);
   border: none;
 }
 
@@ -54,7 +59,7 @@
 }
 
 #signup-button:hover {
-  background-color: #163a5b;
+  background-color: var(--dark-avio-blue);
   border: none;
 }
 
@@ -62,8 +67,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--light-grey);
+  box-shadow: 10px 20px 50px var(--light-yellow);
+  height: 50%;
   margin-inline: auto;
-  margin-top: 15rem;
+  margin-top: 6.5rem;
+  margin-bottom: 4rem;
   padding: 2rem;
   border-radius: 7%;
   gap: 1.5rem;
@@ -74,9 +83,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--light-grey);
+  box-shadow: 10px 20px 50px var(--light-yellow);
   margin-inline: auto;
-  margin-top: 15rem;
-  margin-bottom: 10rem;
+  margin-top: 12rem;
+  margin-bottom: 11rem;
   padding: 2rem;
   border-radius: 7%;
   gap: 1.5rem;
@@ -113,10 +124,58 @@
   transition: 500ms;
 }
 
+/*Media query 1920px ------------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 1920px) {
+  .login-container {
+    width: 20%;
+    background-color: var(--light-grey);
+    box-shadow: 10px 20px 50px var(--light-yellow);
+  }
+
+  .login-container {
+    width: 27%;
+  }
+
+  .signup-container {
+    margin-top: 6.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+/*Media query 1280px ------------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 1280px) {
+  .loginSignup-container {
+    display: flex;
+    flex-direction: column;
+    background-size: 135%;
+  }
+
+  .login-container {
+    margin-top: 10.5rem;
+    margin-bottom: 10rem;
+    width: 40%;
+  }
+
+  .signup-container {
+    padding: 1.5rem;
+  }
+}
+
+/*Media query 768px ------------------------------------------------------------------------------------------------------*/
+
 @media (max-width: 768px) {
   .loginSignup-container {
     display: flex;
     flex-direction: column;
+    background-size: 185%;
+  }
+
+  .login-container {
+    margin-top: 10.5rem;
+    margin-bottom: 10rem;
+    width: 50%;
   }
 
   #login-button {
@@ -144,6 +203,10 @@
 @media (max-width: 480px) {
   .loginSignup-container {
     align-items: center;
+    background-image: url(../../-assets/media/food-frame-mobile.png),
+      linear-gradient(320deg, var(--light-pink), var(--light-yellow), var(--light-blue));
+    background-size: 125%;
+    background-position: center;
   }
 
   .signup-container form,
@@ -153,6 +216,13 @@
 
   .login-container {
     align-items: center;
+    border-radius: 20px;
+    width: 80%;
+  }
+
+  .signup-container {
+    border-radius: 20px;
+    padding: 1.5rem;
   }
 
   #login-button {
