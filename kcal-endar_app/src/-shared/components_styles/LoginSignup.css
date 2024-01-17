@@ -1,7 +1,10 @@
 .loginSignup-container {
   display: flex;
   background-image: url(../../-assets/media/food-frame.png),
-    linear-gradient(320deg, var(--light-pink), var(--light-yellow), var(--light-blue));
+    linear-gradient(320deg,
+      #eb92be,
+      #ffef78,
+      #63c9b4);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
