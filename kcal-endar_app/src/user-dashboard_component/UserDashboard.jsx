@@ -1,12 +1,18 @@
+import { ContainerSchede } from "../-shared/ContainerSchede";
+import { PieChart } from "./Components/PieChart";
 import { UserDashboardCalendar } from "./Components/UserDashboardCalendar";
 
-export function UserDashboard() {
+import "./Style/userDashboard.css";
 
+export function UserDashboard() {
   return (
     <div className="user-dashboard-container">
-      <h1>USER DASHBOARD</h1>
+      <div className="chart-container">
+        <PieChart />
+      </div>
 
+      <ContainerSchede  />
       <UserDashboardCalendar />
     </div>
-  )
+  );
 }

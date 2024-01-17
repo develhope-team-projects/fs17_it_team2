@@ -1,9 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 
 export function UseSignup() {
   const [dataSignup, setDataSignup] = useState({
-    nome: "",
-    cognome: "",
+    name: "",
+    surname: "",
     username: "",
     email: "",
     password: "",
@@ -17,6 +18,9 @@ export function UseSignup() {
     invalidSurname: "",
   });
 
+   const [isCheckedUser, setIsCheckedUser] = useState(false);
+   const [isCheckedDoc, setIsCheckedDoc] = useState(false);
+
   const regexPatterns = {
     alpha: /^[a-zA-Z]/,
     alphanumeric: /^[a-zA-Z0-9_.]+$/,
@@ -25,8 +29,24 @@ export function UseSignup() {
   };
 
   const isValid = (value, regex) => regex.test(value);
+  
+  // funzioni per scegliere tipologia utente che si registra
+   function handleCheckboxUserChange() {
+     setIsCheckedUser(!isCheckedUser);
+     if (isCheckedDoc) {
+       setIsCheckedDoc(false);
+     }
+   }
 
-  function handlerChange(e) {
+   function handleCheckboxDocChange() {
+     setIsCheckedDoc(!isCheckedDoc);
+     if (isCheckedUser) {
+       setIsCheckedUser(false);
+     }
+   }
+
+   // funzione digitazione input
+   function handlerChange(e) {
     const { name, value } = e.target;
     setDataSignup((prevData) => ({
       ...prevData,
@@ -35,11 +55,12 @@ export function UseSignup() {
     value === "" ? setErrorsSignup({}) : "";
   }
 
-  const handlerBtn = (evt) => {
+   // funzione al click sul button
+  const handlerBtn = async (evt) => {
     evt.preventDefault();
-    const { nome, cognome, username, email, password } = dataSignup;
+    const { name, surname, username, email, password } = dataSignup;
 
-    setErrorsSignup({
+    const newError = {
       invalidUsername:
         username && !isValid(username, regexPatterns.alphanumeric)
           ? "ATTENZIONE: L'username non può contenere caratteri speciali (es:£, $, %, &, *, @)"
@@ -53,14 +74,34 @@ export function UseSignup() {
           ? "ATTENZIONE: inserisci una password valida"
           : "",
       invalidName:
-        nome && !isValid(nome, regexPatterns.alpha)
+        name && !isValid(name, regexPatterns.alpha)
           ? "ATTENZIONE: Il nome non può contenere numeri e caratteri speciali (es:£, $, %, &, *, @)"
           : "",
       invalidSurname:
-        cognome && !isValid(cognome, regexPatterns.alpha)
+        surname && !isValid(surname, regexPatterns.alpha)
           ? "ATTENZIONE: Il cognome non può contenere numeri e caratteri speciali (es:£, $, %, &, *, @)"
           : "",
-    });
+    };
+    setErrorsSignup(newError);
+    const areData = Object.values(dataSignup).every((value) => value !== "");
+    const noErrors = Object.values(errorsSignup).every((value) => value === "");
+
+    // verifica se input sono digitati correttamente
+    if (areData && noErrors) {
+      try {
+      if(isCheckedUser) {
+      const res = await axios.post(
+          "http://localhost:3000/signup/user", dataSignup)
+           console.log(res.data)
+      } else if(isCheckedDoc) {
+        const res = await axios.post(
+          "http://localhost:3000/signup/doc", dataSignup);
+           console.log(res.data);
+      }
+    } catch (error) {
+        console.error(error.message);
+      }
+    }
   };
 
   return {
@@ -68,5 +109,9 @@ export function UseSignup() {
     errorsSignup,
     onSignup: handlerBtn,
     onInputChangeSignup: handlerChange,
+    isCheckedUser,
+    isCheckedDoc,
+    onInputUserType: handleCheckboxUserChange,
+    onInputDocType: handleCheckboxDocChange
   };
 }

@@ -1,6 +1,7 @@
 .user-dashboard-calendar-container {
   height: 40rem;
-  margin-top: 6rem;
+  margin-top: 2rem;
+  width: 100%;
 
   background-color: tomato;
 }

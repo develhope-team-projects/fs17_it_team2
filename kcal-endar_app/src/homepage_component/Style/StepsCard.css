@@ -19,10 +19,7 @@
   flex-wrap: wrap;
 }
 
-.card {
-  max-width: 25% !important;
-  max-height: 400px !important;
-}
+
 
 .card-container .card {
   margin-right: 20px;
@@ -192,8 +189,5 @@
     font-weight: bolder;
   }
 
-    .card {
-  max-width: 80% !important;
-  max-height: 400px !important;
-}
+
 }

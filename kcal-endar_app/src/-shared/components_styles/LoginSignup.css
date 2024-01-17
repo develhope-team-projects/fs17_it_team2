@@ -187,7 +187,21 @@
   }
 }
 
-/*Media query 480px ------------------------------------------------------------------------------------------------------*/
+ #userType-container {
+  display: flex !important;
+  margin: 0 !important;
+  gap: 0.5rem; 
+ 
+ }
+
+ .userType-labelAndInp input {
+  margin-bottom: 0 !important;
+  margin-right: 0.5rem;
+  }
+.userType-labelAndInp label {
+    margin-right: 0.5rem;
+
+}
 
 @media (max-width: 480px) {
   .loginSignup-container {
@@ -217,6 +231,7 @@
   #login-button {
     width: 100px;
     margin-inline: auto;
+    
   }
 
   .double-inp-signup-container {
