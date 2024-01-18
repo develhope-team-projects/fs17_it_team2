@@ -5,7 +5,7 @@ import "../Style/ButtonRegistrati.css";
 export function ButtonRegistrati() {
   return (
     <div className="button-container">
-      <Button href="#" type="submit" className="button-container-registrati">
+      <Button href="signup" type="submit" className="button-container-registrati">
         Registrati
       </Button>
     </div>

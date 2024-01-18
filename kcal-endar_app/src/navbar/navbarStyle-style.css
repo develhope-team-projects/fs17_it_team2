@@ -9,6 +9,8 @@
     font-size: 20px;
 }
 
+
+
 /* Media query da 2560px */
 
 @media screen and (max-width: 2560px) {
@@ -59,6 +61,10 @@
     #navbar-brand-avatar {
         margin-left: 3vw;
         scale: 0.7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
     }
 }
 
@@ -95,8 +101,9 @@
         font-size: 2rem !important;
     }
 
-    #navbar-brand-avatar {
-        display: flex;
+    #navbar-brand-avatar{
+          display: flex;
+        flex-direction: column;
         align-items: center;
     }
 
