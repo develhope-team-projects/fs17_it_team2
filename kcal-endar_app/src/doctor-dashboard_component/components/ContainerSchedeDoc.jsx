@@ -3,44 +3,46 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import "swiper/css/controller";
 import "swiper/css/scrollbar";
-import { ButtonScheda } from "./ButtonScheda";
+import { ButtonScheda } from "../../-shared/ButtonScheda";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 /* css */
-import "./components_styles/containerSchede.css";
+import "../../-shared/components_styles/containerSchede.css";
 
-export function ContainerSchede() {
-  const [users, setUsers] = useState([]);
+export function ContainerSchedeDoc() {
   const [cardForRow, setCardForRow] = useState([]);
 
   //logica fetch pazienti dal database
- useEffect(() => {
-   const fetchData = async () => {
-     try {
-       const response = await axios.get("http://localhost:3000/users");
-       const cardRowIndex = 1;
-       const cards = [];
-       for (let i = 0; i < response.data.length; i += cardRowIndex) {
-         cards.push(response.data.slice(i, i + cardRowIndex));
-       }
-       setCardForRow(cards);
-          
-       setUsers(response.data);
-     } catch (error) {
-       console.error(error.message, ": Errore durante la richiesta");
-     }
-   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/users");
+        console.log(response.data.users);
 
-   fetchData();
- }, []);
- console.log(users);
+        if (response.data.users.length > 0) {
+          const cardRowIndex = 1;
+          for (let i = 0; i < response.data.users.length; i += cardRowIndex) {
+            setCardForRow((prevCards) => [
+              ...prevCards,
+              response.data.users.slice(i, i + cardRowIndex),
+            ]);
+          }
+        } else {
+          console.log("array vuoto");
+        }
+      } catch (error) {
+        console.error(error.message, ": Errore durante la richiesta");
+      }
+    };
 
-  //funzione per calcolare quante card voglio per riga
+    fetchData();
+    console.log(cardForRow);
+  }, []);
 
   return (
     <>
-      {users.length >0 && (
+      {cardForRow.length > 0 && (
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           breakpoints={{
@@ -86,10 +88,10 @@ export function ContainerSchede() {
           onSlideChange={() => console.log("slide change")}
         >
           {cardForRow.map((card) => (
-            <SwiperSlide key={card[0].email} tag="div" slot="content-start">
+            <SwiperSlide key={card[0].id} tag="div" slot="content-start">
               {card.map((utente) => (
                 <ButtonScheda
-                  key={utente.email}
+                  key={utente.id}
                   email={utente.email}
                   name={utente.name}
                   surname={utente.surname}

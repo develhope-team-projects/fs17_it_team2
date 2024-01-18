@@ -39,7 +39,6 @@ const signupUser = async (req, res) => {
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 
-
 // REGISTRAZIONE UTENTE DOCTOR
 const signupDoc = async (req, res) => {
   const { name, surname, username, email, password } = req.body;
@@ -56,7 +55,7 @@ const signupDoc = async (req, res) => {
 
     // Verifica se l'utente è già presente nel database
     if (existingDoc || existingUser) {
-      res.status(500).json({message: "Utente già registrato" });
+      res.status(500).json({ message: "Utente già registrato" });
     } else {
       // Inserisci il nuovo utente nella tabella userData
       await db.none(
@@ -78,9 +77,9 @@ const signupDoc = async (req, res) => {
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 
-// LOGIN UTENTE 
+// LOGIN UTENTE
 const login = async (req, res) => {
-  let userType= null
+  let userType = null;
   const { username, email, password } = req.body;
 
   try {
@@ -117,23 +116,34 @@ const login = async (req, res) => {
     console.error(error.message);
     res.status(500).json({ message: "Errore durante la registrazione" });
   }
-
 };
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 
-
-//RECUPERA UN UTENTE DAL DATABASE
+//RECUPERA UTENTI DAL DATABASE
 const getUsers = async (req, res) => {
   try {
     // Cerca utente nella tabella userData
-    const userData = await db.many(
-      "SELECT * FROM userData",
-    );
-
+    const userData = await db.many("SELECT * FROM userData");
+    const contieneOggettoConID = (array, idSearch) => {
+        array.forEach(element => {
+          if(element.id === idSearch.id){
+            console.log(element)
+            return true
+          }
+        });
+        console.log(idSearch)
+    };
     if (userData.length > 0) {
-      res.status(200).json({ message: "Utenti fetchati", users: userData });
+     let filterUser = []
+      userData.map(user => {
+        if(!contieneOggettoConID(filterUser, user.id)) {
+          filterUser=[...filterUser, user]
+        }
+        console.log(contieneOggettoConID(filterUser, user.id))
+      })
+      res.status(200).json({ message: "Utenti fetchati", users: filterUser });
     } else {
       res.status(404).json({ message: "utenti non presenti" });
     }
@@ -143,4 +153,4 @@ const getUsers = async (req, res) => {
   }
 };
 
-export { signupUser, signupDoc, login, getUsers};
+export { signupUser, signupDoc, login, getUsers };
