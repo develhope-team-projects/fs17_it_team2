@@ -8,7 +8,7 @@ export function BlogPart() {
       <Card className="stepCardBlog">
         <Card.Body>
           <Card.Title>
-            PARTECIPA AL NOSTRO <span>BLOG!</span>
+            <button className="card-blog-button">PARTECIPA AL NOSTRO <span>BLOG!</span></button>
           </Card.Title>
         </Card.Body>
       </Card>
