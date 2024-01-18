@@ -10,16 +10,19 @@
 .chart-container {
   margin-top: 3rem;
   margin-bottom: 3rem;
-  max-height:30vw;
+  height:30vw;
   display: flex;
   justify-content: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .chart-container {
-  width: 50vw;
-  max-height:60vw;
+  height:60vw;
   display: flex;
   justify-content: center;
+}
+.user-dashboard-container{
+  padding: 5rem 1rem 2rem 1rem;
+
 }
 }

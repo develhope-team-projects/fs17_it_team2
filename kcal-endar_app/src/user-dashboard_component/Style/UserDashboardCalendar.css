@@ -5,7 +5,9 @@
 
   background-color: tomato;
 }
-
+.mbsc-timeline-resource-col {
+  width: 10em !important;
+}
 .md-meal-type {
   font-size: 14px;
   font-weight: 600;
