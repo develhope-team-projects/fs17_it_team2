@@ -3,9 +3,7 @@
 }
 
 .main-container {
-  /* background-image: linear-gradient(5deg, var(--tangerine) 10%, var(--green-yellow) 50%); */
-  /* background-color: var(--aviation-blue); */
-  background-image: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
+  /* background-image: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4); */
   padding: 2rem;
   width: 100%;
 }
