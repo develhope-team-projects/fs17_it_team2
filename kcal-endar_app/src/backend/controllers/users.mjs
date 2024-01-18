@@ -1,61 +1,8 @@
-import pgPromise from "pg-promise";
+import { db } from "../db.mjs";
+/* ------------------------------------------------------------------------------------------------------ */
 
-const db = pgPromise()("postgres://postgres:postgres@localhost:5432/postgres");
-
-const setupDb = async () => {
-  try {
-    // Creazione tabella userData
-    await db.none(`
-      DROP TABLE IF EXISTS userData;
-
-      CREATE TABLE userData (
-        id SERIAL NOT NULL PRIMARY KEY,
-        name TEXT NOT NULL,
-        surname TEXT NOT NULL,
-        username TEXT NOT NULL,
-        email TEXT NOT NULL,
-        password TEXT NOT NULL
-      );
-    `);
-
-    // Inserimento dati di esempio
-    await db.none(`
-      INSERT INTO userData (name, surname, username, email, password)
-      VALUES ('Mario', 'Rossi', 'MarioRossi', 'mariorossi@gmail.com', 'abcd');
-    `);
-
-    // Creazione tabella docData
-    await db.none(`
-      DROP TABLE IF EXISTS docData;
-
-      CREATE TABLE docData (
-        id SERIAL NOT NULL PRIMARY KEY,
-        name TEXT NOT NULL,
-        surname TEXT NOT NULL,
-        username TEXT NOT NULL,
-        email TEXT NOT NULL,
-        password TEXT NOT NULL,
-       
-      );
-    `);
-
-    // Inserimento dati di esempio
-    await db.none(`
-      INSERT INTO docData (name, surname, username, email, password)
-      VALUES ('Luca', 'Bianchi', 'LucaBianchi', 'lucabianchi@gmail.com', 'abcd');
-    `);
-
-    console.log("Database setup completed successfully");
-  } catch (error) {
-    console.error("Error during database setup:", error);
-  }
-};
-
-setupDb();
-
-// verifica signup
+// REGISTRAZIONE UTENTE USER
 const signupUser = async (req, res) => {
-
   const { name, surname, username, email, password } = req.body;
   try {
     // Seleziona i dati dalla tabella userData
@@ -88,9 +35,13 @@ const signupUser = async (req, res) => {
     res.status(500).json({ message: "Errore durante la registrazione" });
   }
 };
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
 
+
+// REGISTRAZIONE UTENTE DOCTOR
 const signupDoc = async (req, res) => {
-
   const { name, surname, username, email, password } = req.body;
   try {
     // Seleziona i dati dalla tabella userData
@@ -123,7 +74,11 @@ const signupDoc = async (req, res) => {
   }
 };
 
-// funzione di login
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+
+// LOGIN UTENTE 
 const login = async (req, res) => {
   let userType= null
   const { username, email, password } = req.body;
@@ -164,5 +119,28 @@ const login = async (req, res) => {
   }
 
 };
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
 
-export { signupUser, signupDoc, login};
+
+//RECUPERA UN UTENTE DAL DATABASE
+const getUsers = async (req, res) => {
+  try {
+    // Cerca utente nella tabella userData
+    const userData = await db.many(
+      "SELECT * FROM userData",
+    );
+
+    if (userData.length > 0) {
+      res.status(200).json({ message: "Utenti fetchati", users: userData });
+    } else {
+      res.status(404).json({ message: "utenti non presenti" });
+    }
+  } catch (error) {
+    console.error("Errore durante la fetch degli utenti:", error.message);
+    res.status(500).json({ message: "Errore durante la get" });
+  }
+};
+
+export { signupUser, signupDoc, login, getUsers};
