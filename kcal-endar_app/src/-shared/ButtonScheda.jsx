@@ -1,7 +1,7 @@
 import "../-shared/components_styles/buttonScheda.css";
 import Card from "react-bootstrap/Card";
 
-export function ButtonScheda({email, name, surname, date}) {
+export function ButtonScheda({email, name, surname, monthPlanner}) {
 /*   function handlerButton() {
     //Al click si apre lo schedario del paziente
     console.log(`pulsante cliccato su ${name} ${surname}`);
@@ -20,7 +20,7 @@ export function ButtonScheda({email, name, surname, date}) {
         <Card.Title className="scheda-title">
           {name} {surname}
         </Card.Title>
-        <Card.Text>{email}</Card.Text>
+        <Card.Text>{email}{monthPlanner}</Card.Text>
       </Card.Body>
     </Card>
   );

@@ -152,5 +152,64 @@ const getUsers = async (req, res) => {
     res.status(500).json({ message: "Errore durante la get" });
   }
 };
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
 
-export { signupUser, signupDoc, login, getUsers };
+const getUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Cerca utente nella tabella userData
+    const userData = await db.oneOrNone(
+      "SELECT * FROM userData WHERE id = $1",
+      id
+    );
+
+    if (userData !== null) {
+      res.status(200).json({ message: "Utente fetchato", user: userData });
+    } else {
+      res.status(404).json({ message: "Utente non presente" });
+    }
+  } catch (error) {
+    console.error("Errore durante la fetch dell'utente:", error.message);
+    res.status(500).json({ message: "Errore durante la get" });
+  }
+};
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+
+const getDoc = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Cerca utente nella tabella userData
+    const userData = await db.one(
+      "SELECT * FROM docData WHERE id = $1",
+      Number(id)
+    );
+
+    if (userData !== null) {
+      res.status(200).json({ message: "Utente fetchato", user: userData });
+    } else {
+      res.status(404).json({ message: "Utente non presente" });
+    }
+  } catch (error) {
+    console.error("Errore durante la fetch dell'utente:", error.message);
+    res.status(500).json({ message: "Errore durante la get" });
+  }
+};
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+
+
+export { signupUser, signupDoc, login, getUsers, getUser, getDoc,  };
