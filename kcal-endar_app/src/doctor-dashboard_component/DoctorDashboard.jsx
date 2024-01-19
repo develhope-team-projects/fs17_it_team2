@@ -1,10 +1,10 @@
-import { ContainerSchede } from "../-shared/ContainerSchede";
-import "../doctor-dashboard_component/styles/doctorDashboard.css";
+import { ContainerSchedeDoc } from "./components/ContainerSchedeDoc";
+import "./style/DoctorDashboard.css";
 
 export const DoctorDashboard = () => {
   return (
     <div className="doctor-dashboard-container">
-      <ContainerSchede />
+      <ContainerSchedeDoc />
     </div>
   );
 };

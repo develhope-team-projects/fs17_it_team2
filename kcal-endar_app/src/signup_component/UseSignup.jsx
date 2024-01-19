@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function UseSignup() {
+  const navigate = useNavigate()
+
   const [dataSignup, setDataSignup] = useState({
     name: "",
     surname: "",
@@ -86,17 +89,18 @@ export function UseSignup() {
     const areData = Object.values(dataSignup).every((value) => value !== "");
     const noErrors = Object.values(errorsSignup).every((value) => value === "");
 
-    // verifica se input sono digitati correttamente
     if (areData && noErrors) {
       try {
       if(isCheckedUser) {
       const res = await axios.post(
           "http://localhost:3000/signup/user", dataSignup)
+          navigate("/login")
            console.log(res.data)
       } else if(isCheckedDoc) {
         const res = await axios.post(
           "http://localhost:3000/signup/doc", dataSignup);
            console.log(res.data);
+           navigate("/login");
       }
     } catch (error) {
         console.error(error.message);

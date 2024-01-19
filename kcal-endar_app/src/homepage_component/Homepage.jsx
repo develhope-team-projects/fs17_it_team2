@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CarouselAndWhat } from "./Components/CarouselAndWhat";
 import { StepsAndBlog } from "./Components/StepsAndBlog";
+import "../homepage_component/homepage.css";
 
 export function Homepage() {
   const navigate = useNavigate()

@@ -2,7 +2,7 @@
   margin-bottom: 0.2rem;
   cursor: pointer;
   text-align: center;
-  background-color: var(--green-primary);
+  background-color: var(--light-grey);
   margin-right: 0.2rem;
 }
 
@@ -18,6 +18,13 @@
   margin: 0;
   font-size: 16px;
   font-weight: 600;
+  font-style: italic;
+  color: var(--aviation-blue)
+}
+
+.scheda-text {
+  ;
+  font-weight: light;
 }
 
 @media (max-width: 480px) {

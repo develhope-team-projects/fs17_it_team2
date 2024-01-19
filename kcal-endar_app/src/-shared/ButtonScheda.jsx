@@ -1,17 +1,17 @@
 import "../-shared/components_styles/buttonScheda.css";
 import Card from "react-bootstrap/Card";
 
-export function ButtonScheda({email, name, surname, date}) {
-  function handlerButton() {
+export function ButtonScheda({email, name, surname, monthPlanner}) {
+/*   function handlerButton() {
     //Al click si apre lo schedario del paziente
     console.log(`pulsante cliccato su ${name} ${surname}`);
-  }
+  } */
 
   return (
     <Card bsPrefix="card" className="scheda-container">
       <Card.Header className="scheda-header">
         <img
-          src="src\-assets\logo\logo.trans.png"
+          src="src\-assets\logo\logo.png"
           style={{ width: "var(--mini-logo)", height: "var(--mini-logo)" }}
           alt=""
         />
@@ -20,7 +20,7 @@ export function ButtonScheda({email, name, surname, date}) {
         <Card.Title className="scheda-title">
           {name} {surname}
         </Card.Title>
-        <Card.Text>{email}.</Card.Text>
+        <Card.Text className="scheda-text" >{email || monthPlanner}</Card.Text>
       </Card.Body>
     </Card>
   );

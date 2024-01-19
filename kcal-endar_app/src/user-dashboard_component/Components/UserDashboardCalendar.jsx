@@ -30,7 +30,7 @@ const types = [
   },
   {
     id: 2,
-    name: 'Snack Mattutino',
+    name: 'Snack 1',
     color: '#157d13',
     kcal: '100 - 200 kcal',
     icon: '🍌',
@@ -44,7 +44,7 @@ const types = [
   },
   {
     id: 4,
-    name: 'Snack Pomeridiano',
+    name: 'Snack 2',
     color: '#68169c',
     kcal: '100 - 200 kcal',
     icon: '🥨',
