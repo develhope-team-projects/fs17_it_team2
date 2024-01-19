@@ -15,18 +15,18 @@ export const App = () => {
   return (
     <div>
 
-    <NavbarSite/>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/user-dashboard" element={<UserDashboard />} />
-        <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-        <Route path="/ricette" element={<Ricette />} />
-      </Routes>
-    </BrowserRouter>
-    <Footer />
+      <NavbarSite/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+          <Route path="/ricette" element={<Ricette />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer />
 
     </div>
   )

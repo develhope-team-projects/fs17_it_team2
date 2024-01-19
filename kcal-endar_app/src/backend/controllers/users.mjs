@@ -1,6 +1,6 @@
 import pgPromise from "pg-promise";
 
-const db = pgPromise()("postgres://postgres:postgres@localhost:5432/postgres");
+const db = pgPromise()("postgres://postgres:Matteo291199@localhost:5432/postgres");
 
 const setupDb = async () => {
   try {

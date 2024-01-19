@@ -1,0 +1,86 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.cardRecipe {
+  width: 72rem;
+  margin: 0 auto;
+}
+
+.titleRecipe {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+}
+
+.card-text .cooking {
+  margin-top: 20px;
+}
+
+.recipe-section h3 {
+  color: black;
+  font-size: 1.5rem;
+}
+
+.recipe-section ul {
+  margin-bottom: 15px;
+}
+
+.recipe-section li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1280px) {
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardRecipe {
+    width: 100%;
+  }
+
+  .titleRecipe1 {
+    font-size: 1.5rem;
+  }
+
+  .recipe-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .recipe-section li {
+    margin-bottom: 5px;
+  }
+
+  .card-text .cooking {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titleRecipe1 {
+    font-size: 1.2rem;
+  }
+
+  .recipe-section h3 {
+    font-size: 1rem;
+  }
+
+  .recipe-section li {
+    margin-bottom: 3px;
+  }
+
+  .titleRecipe1,
+  .recipe-section h3,
+  .recipe-section li {
+    font-size: 0.9rem;
+  }
+
+  .card-text .cooking {
+    font-size: 0.8rem;
+  }
+}

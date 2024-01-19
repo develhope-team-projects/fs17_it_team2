@@ -87,12 +87,13 @@ export function UserDashboardCalendar() {
   const [type, setType] = React.useState(1);
 
   React.useEffect(() => {
+    //fa il fetch dei dati, da inserire api nostra
     getJson(
       'https://trial.mobiscroll.com/meal-planner/',
       (events) => {
         setMyMeals(events);
       },
-      'jsonp',
+      'json',
     );
   }, []);
 

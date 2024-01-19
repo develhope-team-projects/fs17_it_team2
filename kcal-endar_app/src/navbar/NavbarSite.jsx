@@ -14,6 +14,7 @@ export function NavbarSite() {
   const [navCollapse, setNavCollapse] = useState(false);
   const [show, setShow] = useState(false);
 
+
   const isVisible = useMediaQuery({ query: "(max-width: 1280px)" });
 
   useEffect(() => {
@@ -31,24 +32,24 @@ export function NavbarSite() {
         <Container id="navbar-container">
           {!navCollapse && (
             <Navbar id="navbar-container">
-              <Navbar.Brand href="#home" id="navbar-brand-logo">
+              <Navbar.Brand href="/" id="navbar-brand-logo">
                 <img src={logo} alt="KCALendar" id="navbar-logo" />
               </Navbar.Brand>
               <Navbar.Brand id="navbar-brand-visible">
-                <Nav.Link href="#chi-siamo" className="navbar-link">
+                <Nav.Link href="/chi-siamo" className="navbar-link">
                   Chi siamo
                 </Nav.Link>
-                <Nav.Link href="#come-funziona" className="navbar-link">
+                <Nav.Link href="/come-funziona" className="navbar-link">
                   Come funziona
                 </Nav.Link>
-                <Nav.Link href="#professionisti" className="navbar-link">
+                <Nav.Link href="/professionisti" className="navbar-link">
                   I nostri professionisti
                 </Nav.Link>
-                <Nav.Link href="#ricette" className="navbar-link">
+                <Nav.Link href="/ricette" className="navbar-link">
                   Ricette
                 </Nav.Link>
               </Navbar.Brand>
-              <Nav.Link href="login" id="navbar-brand-avatar">
+              <Nav.Link href="/login" id="navbar-brand-avatar">
                 <img src={avatar} width="40" height="40" />
                 <span
                
