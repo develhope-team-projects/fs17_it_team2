@@ -20,7 +20,7 @@ export function ButtonScheda({email, name, surname, monthPlanner}) {
         <Card.Title className="scheda-title">
           {name} {surname}
         </Card.Title>
-        <Card.Text>{email}{monthPlanner}</Card.Text>
+        <Card.Text className="scheda-text" >{email || monthPlanner}</Card.Text>
       </Card.Body>
     </Card>
   );

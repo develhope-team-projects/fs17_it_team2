@@ -93,7 +93,7 @@ export function ContainerSchedeUsers() {
               <ButtonScheda
                 key={utente.id}
                 monthPlanner={"meal planner: january"}
-                name= {`Doctor: ${utente.name}`}
+                name= {` from doctor: ${utente.name}`}
                 surname={utente.surname}
               />
             ))}
