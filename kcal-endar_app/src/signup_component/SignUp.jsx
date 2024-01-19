@@ -1,17 +1,23 @@
 import { Button } from "react-bootstrap";
 import "../-shared/components_styles/loginSignup.css";
 import { UseSignup } from "./UseSignup";
-import { useState } from "react";
 
-export function Signup() { 
-
-  const { dataSignup, errorsSignup, onSignup, onInputChangeSignup, isCheckedDoc, isCheckedUser, onInputDocType, onInputUserType } =
-    UseSignup();
+export function Signup() {
+  const {
+    dataSignup,
+    errorsSignup,
+    onSignup,
+    onInputChangeSignup,
+    isCheckedDoc,
+    isCheckedUser,
+    onInputDocType,
+    onInputUserType,
+  } = UseSignup();
   return (
     <div className="loginSignup-container">
       <div className="signup-container">
         <h2>Registrati</h2>
-        <form action="">
+        <form action="" type="submit">
           <div className="double-inp-signup-container">
             <div className="label-inp-signup-container">
               <input
@@ -80,11 +86,31 @@ export function Signup() {
             Registrati
           </Button>{" "}
         </form>
-        <p className="signup-error-message">{errorsSignup.invalidName}</p>
-        <p className="signup-error-message">{errorsSignup.invalidSurname}</p>
-        <p className="signup-error-message">{errorsSignup.invalidUsername}</p>
-        <p className="signup-error-message">{errorsSignup.invalidEmail}</p>
-        <p className="signup-error-message">{errorsSignup.invalidPassword}</p>
+
+        <span>sei già registrato? <a style={{textDecoration: "none", color: "var(--tangerine)", fontWeight:"bold" }} href="/login">accedi</a> </span> 
+        <div>
+          {errorsSignup && (
+            <p className="signup-error-message">{errorsSignup.invalidName}</p>
+          )}
+          {errorsSignup && (
+            <p className="signup-error-message">
+              {errorsSignup.invalidSurname}
+            </p>
+          )}
+          {errorsSignup && (
+            <p className="signup-error-message">
+              {errorsSignup.invalidUsername}
+            </p>
+          )}
+          {errorsSignup && (
+            <p className="signup-error-message">{errorsSignup.invalidEmail}</p>
+          )}
+          {errorsSignup && (
+            <p className="signup-error-message">
+              {errorsSignup.invalidPassword}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

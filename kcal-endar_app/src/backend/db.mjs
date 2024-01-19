@@ -1,5 +1,8 @@
 import pgPromise from "pg-promise";
 const db = pgPromise()("postgres://postgres:postgres@localhost:5432/postgres");
+/* ----------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------*/
 const setupDb = async () => {
   try {
     // Creazione tabella userData
@@ -21,6 +24,10 @@ const setupDb = async () => {
       VALUES ('Mario', 'Rossi', 'MarioRossi', 'mariorossi@gmail.com', 'abcd');
     `);
 
+    /* ----------------------------------------------------------------------------------------------*/
+    /* ----------------------------------------------------------------------------------------------*/
+    /* ----------------------------------------------------------------------------------------------*/
+
     // Creazione tabella docData
     await db.none(`
       DROP TABLE IF EXISTS docData;
@@ -40,6 +47,26 @@ const setupDb = async () => {
       VALUES ('Luca', 'Bianchi', 'LucaBianchi', 'lucabianchi@gmail.com', 'abcd');
     `);
 
+    /* ----------------------------------------------------------------------------------------------*/
+    /* ----------------------------------------------------------------------------------------------*/
+    /* ----------------------------------------------------------------------------------------------*/
+
+    // Creazione tabella relazionale monthPlanner users
+    await db.none(`
+      DROP TABLE IF EXISTS monthPlanner;
+      CREATE TABLE monthPlanner (
+        id SERIAL NOT NULL PRIMARY KEY,
+        monthPlanner TEXT NOT NULL
+        userData_id INT REFERENCES userData(id)
+        docData INT REFERENCES docData(id)
+      );
+    `);
+    // Inserimento dati di esempio
+    await db.none(`
+      INSERT INTO docData (monthPlanner, )
+      VALUES ('meal planner gennaio');
+    `);
+
     console.log("Database setup completed successfully");
   } catch (error) {
     console.error("Error during database setup:", error);
@@ -48,4 +75,4 @@ const setupDb = async () => {
 
 setupDb();
 
-export {db}
+export { db };

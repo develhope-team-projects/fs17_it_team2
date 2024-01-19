@@ -31,7 +31,7 @@ export function NavbarSite() {
         <Container id="navbar-container">
           {!navCollapse && (
             <Navbar id="navbar-container">
-              <Navbar.Brand href="#home" id="navbar-brand-logo">
+              <Navbar.Brand href="/" id="navbar-brand-logo">
                 <img src={logo} alt="KCALendar" id="navbar-logo" />
               </Navbar.Brand>
               <Navbar.Brand id="navbar-brand-visible">

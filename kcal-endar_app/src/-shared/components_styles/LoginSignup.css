@@ -105,7 +105,6 @@
   display: flex;
   flex-direction: column;
 }
-
 .signup-error-message {
   color: red;
 }
@@ -195,7 +194,7 @@
  }
 
  .userType-labelAndInp input {
-  margin-bottom: 0 !important;
+  margin-bottom: 2rem !important;
   margin-right: 0.5rem;
   }
 .userType-labelAndInp label {

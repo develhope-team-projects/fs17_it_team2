@@ -7,8 +7,8 @@
   --custom-font: "Lato", sans-serif;
 }
 
-* {
-  font-size: 14px;
+body {
+  font-size: 15px;
   margin: 0;
   font-family: var(--custom-font);
   margin: 0;
