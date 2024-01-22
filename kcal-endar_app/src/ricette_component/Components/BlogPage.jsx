@@ -327,7 +327,11 @@ export function BlogPage() {
           </Card.Body>
         </Card>
 
-        <Card style={{ width: "21rem" }} className="custom-card-ricette" id="recipe12">
+        <Card
+          style={{ width: "21rem" }}
+          className="custom-card-ricette"
+          id="recipe12"
+        >
           <Card.Img
             variant="top"
             src="/src/imgRicetteAnteprima/sformatoMelanzane.jpeg"
@@ -353,6 +357,3 @@ export function BlogPage() {
     </div>
   );
 }
-
-
-
