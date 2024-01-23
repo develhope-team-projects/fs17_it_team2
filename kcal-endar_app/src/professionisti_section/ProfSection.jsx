@@ -1,0 +1,1 @@
+import './profSection_style.css';
