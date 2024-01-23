@@ -4,6 +4,7 @@ import { UseLogin } from "./UseLogin";
 import { Link } from "react-router-dom";
 
 
+
 export function Login() {
   const { dataLogin, errorsLogin, onLogin, onInputChangeLogin } = UseLogin();
 
@@ -33,7 +34,7 @@ export function Login() {
           <h6>non hai un account?</h6>
           <Link to="../../signup" className="login-link">Registrati</Link>
          
-          <p>{errorsLogin.invalidUsername}</p>
+          <p>{errorsLogin.invalidUsernameEmail}</p>
           <p>{errorsLogin.invalidPassword}</p>
         </form>
       </div>

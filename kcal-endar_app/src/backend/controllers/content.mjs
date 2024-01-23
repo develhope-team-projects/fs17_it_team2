@@ -1,35 +1,55 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 import { db } from "../db.mjs";
+import jwt from "jsonwebtoken";
+
+// ... (il resto del tuo codice rimane invariato)
+
+import process from "process";
+
 /* ------------------------------------------------------------------------------------------------------ */
 
 // REGISTRAZIONE UTENTE USER
 const signupUser = async (req, res) => {
   const { name, surname, username, email, password } = req.body;
-  try {
-    // Seleziona i dati dalla tabella userData
-    const existingUser = await db.oneOrNone(
-      "SELECT * FROM userData WHERE email = $1 OR username = $2",
-      [email, username]
-    );
-    const existingDoc = await db.oneOrNone(
-      "SELECT * FROM docData WHERE email = $1 OR username = $2",
-      [email, username]
-    );
 
-    // Verifica se l'utente è già presente nel database
-    if (existingUser || existingDoc) {
-      res.status(500).json({ message: "Utente già registrato" });
-    } else {
+  try {
+    await db.tx(async (t) => {
+      // Seleziona i dati dalla tabella userData
+      const existingUser = await t.oneOrNone(
+        "SELECT * FROM userData WHERE email = $1 OR username = $2",
+        [email, username]
+      );
+
+      const existingDoc = await t.oneOrNone(
+        "SELECT * FROM docData WHERE email = $1 OR username = $2",
+        [email, username]
+      );
+
+      // Verifica se l'utente è già presente nel database
+      if (existingUser || existingDoc) {
+        res.status(500).json({ message: "Utente già registrato" });
+        return;
+      }
+
       // Inserisci il nuovo utente nella tabella userData
-      await db.none(
+      const result = await t.one(
         `
         INSERT INTO userData (name, surname, username, email, password)
-        VALUES ($1, $2, $3, $4, $5);
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING id;
       `,
         [name, surname, username, email, password]
       );
 
-      res.status(201).json({ message: "Utente aggiunto" });
-    }
+      const userId = result.id;
+
+      // Inserisci automaticamente un record nella tabella meals con l'ID dell'utente
+      await t.none("INSERT INTO meals (userData_id) VALUES ($1)", [userId]);
+    });
+
+    res.status(201).json({ message: "Utente aggiunto" });
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).json({ message: "Errore durante la registrazione" });
@@ -80,33 +100,49 @@ const signupDoc = async (req, res) => {
 // LOGIN UTENTE
 const login = async (req, res) => {
   let userType = null;
-  const { username, email, password } = req.body;
+  const { email, password } = req.body;
 
   try {
     // Cerca utente nella tabella userData
     const userData = await db.oneOrNone(
-      "SELECT * FROM userData WHERE (email = $1 OR username = $2) AND password = $3",
-      [email, username, password]
+      "SELECT * FROM userData WHERE email = $1 ",
+      [email]
     );
 
     // Cerca dottore nella tabella docData
     const docData = await db.oneOrNone(
-      "SELECT * FROM docData WHERE (email = $1 OR username = $2) AND password = $3",
-      [email, username, password]
+      "SELECT * FROM docData WHERE email = $1",
+      [email]
     );
 
     // Se l'utente è presente nel database, imposta il userType corretto
-    if (userData) {
+    if (userData && userData.password === password) {
       userType = "user";
-    } else if (docData) {
+    } else if (docData && docData.password === password) {
       userType = "doc";
     }
 
     // Restituisci la risposta in base al userType
     if (userType) {
-      res
-        .status(201)
-        .json({ message: `L'utente esiste: si può loggare`, userType });
+      const payload = {
+        id: userData.id,
+        email,
+      };
+      const { SECRET = "abcd" } = process.env;
+      const token = jwt.sign(payload, SECRET);
+      console.log(token);
+
+      await db.none(`UPDATE userData SET token=$2 WHERE id=$1`, [
+        userData.id,
+        token,
+      ]);
+      res.status(201).json({
+        message: `L'utente esiste: si può loggare`,
+        userType,
+        id: Number(userData.id),
+        email,
+        token,
+      });
     } else {
       res
         .status(500)
@@ -127,22 +163,22 @@ const getUsers = async (req, res) => {
     // Cerca utente nella tabella userData
     const userData = await db.many("SELECT * FROM userData");
     const contieneOggettoConID = (array, idSearch) => {
-        array.forEach(element => {
-          if(element.id === idSearch.id){
-            console.log(element)
-            return true
-          }
-        });
-        console.log(idSearch)
+      array.forEach((element) => {
+        if (element.id === idSearch.id) {
+          console.log(element);
+          return true;
+        }
+      });
+      console.log(idSearch);
     };
     if (userData.length > 0) {
-     let filterUser = []
-      userData.map(user => {
-        if(!contieneOggettoConID(filterUser, user.id)) {
-          filterUser=[...filterUser, user]
+      let filterUser = [];
+      userData.map((user) => {
+        if (!contieneOggettoConID(filterUser, user.id)) {
+          filterUser = [...filterUser, user];
         }
-        console.log(contieneOggettoConID(filterUser, user.id))
-      })
+        console.log(contieneOggettoConID(filterUser, user.id));
+      });
       res.status(200).json({ message: "Utenti fetchati", users: filterUser });
     } else {
       res.status(404).json({ message: "utenti non presenti" });
@@ -163,7 +199,7 @@ const getUser = async (req, res) => {
     // Cerca utente nella tabella userData
     const userData = await db.oneOrNone(
       "SELECT * FROM userData WHERE id = $1",
-      id
+      Number(id)
     );
 
     if (userData !== null) {
@@ -198,18 +234,83 @@ const getDoc = async (req, res) => {
     }
   } catch (error) {
     console.error("Errore durante la fetch dell'utente:", error.message);
-    res.status(500).json({ message: "Errore durante la get" });
+    res.status(500).json({ message: "Errore durante la get:" });
+  }
+};
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+
+const getUserMealsPlanner = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    console.log("UserID:", userId);
+
+    const meals = await db.many(
+      "SELECT * FROM meals WHERE userData_id = $1",
+      userId
+    );
+    console.log("Meals:", meals);
+
+    res.status(200).json({ meals, message: "dati ricevuti correttamente" });
+  } catch (error) {
+    console.error("Errore nel recupero dei dati del monthPlanner:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+const createFullMealsPlanner = async (req, res) => {
+  const { title, calories, notes, start, eend, resource } = req.body;
+  const {userId} = req.params
+
+  try {
+    // Esegui la query per inserire un nuovo pasto nel database
+    const result = await db.oneOrNone(
+      `
+      INSERT INTO meals (title, calories, notes, start, eEnd, resource, userData_id)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      RETURNING*;
+    `,
+      [title, calories, notes, start, eend, resource, userId]
+    );
+
+    // Invia la risposta con i dati del pasto appena creato
+    res.status(201).json({result, message: "dati ricevuti correttamente"});
+  } catch (error) {
+    console.error("Errore nell'inserimento del pasto:", error);
+    res.status(500).send("Internal Server Error");
   }
 };
 
 
-
-
-
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
 
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
 
-export { signupUser, signupDoc, login, getUsers, getUser, getDoc,  };
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------------ */
+
+export {
+  signupUser,
+  signupDoc,
+  login,
+  getUsers,
+  getUser,
+  getDoc,
+  getUserMealsPlanner,
+  createFullMealsPlanner,
+};
