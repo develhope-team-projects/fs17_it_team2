@@ -25,8 +25,8 @@ export const App = () => {
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />
-            <Route path="/ricette" element={<Ricette />} />
           </Routes>
+          <Ricette />
         </BrowserRouter>
         <Footer />{" "}
       </UserProvider>
