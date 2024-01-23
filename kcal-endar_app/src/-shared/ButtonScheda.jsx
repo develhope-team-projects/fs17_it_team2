@@ -1,14 +1,11 @@
 import "../-shared/components_styles/buttonScheda.css";
 import Card from "react-bootstrap/Card";
 
-export function ButtonScheda({email, name, surname, monthPlanner}) {
-/*   function handlerButton() {
-    //Al click si apre lo schedario del paziente
-    console.log(`pulsante cliccato su ${name} ${surname}`);
-  } */
+export function ButtonScheda({email, name, surname, monthPlanner} ) {
 
+ 
   return (
-    <Card bsPrefix="card" className="scheda-container">
+    <Card bsPrefix="card" className="scheda-container"  >
       <Card.Header className="scheda-header">
         <img
           src="src\-assets\logo\logo.png"
