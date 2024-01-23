@@ -76,21 +76,21 @@ export function NavbarSite() {
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <Nav.Link href="#chi-siamo" className="navbar-link">
+                  <Nav.Link href="/chi-siamo" className="navbar-link">
                     Chi siamo
                   </Nav.Link>
-                  <Nav.Link href="#come-funziona" className="navbar-link">
+                  <Nav.Link href="/come-funziona" className="navbar-link">
                     Come funziona
                   </Nav.Link>
-                  <Nav.Link href="#professionisti" className="navbar-link">
+                  <Nav.Link href="/professionisti" className="navbar-link">
                     I nostri professionisti
                   </Nav.Link>
-                  <Nav.Link href="#ricette" className="navbar-link">
+                  <Nav.Link href="/ricette" className="navbar-link">
                     Ricette
                   </Nav.Link>
                 </Offcanvas.Body>
               </Offcanvas>
-              <Navbar.Brand href="#home" id="navbar-brand-logo">
+              <Navbar.Brand href="/home" id="navbar-brand-logo">
                 <img src={logo} alt="KCALendar" id="navbar-logo" />
               </Navbar.Brand>
               <Navbar.Brand id="navbar-brand-avatar">
