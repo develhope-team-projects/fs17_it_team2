@@ -9,6 +9,8 @@ body {
   width: 72rem;
   margin: 0 auto;
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .titleRecipe {
@@ -19,6 +21,7 @@ body {
 
 .card-text .cooking {
   margin-top: 20px;
+  margin-bottom: 3rem;
 }
 
 .recipe-section h3 {
@@ -35,7 +38,7 @@ body {
 }
 
 @media (max-width: 1280px) {
-  .card {
+  .cardRecipe {
     width: 100%;
   }
 }
@@ -59,6 +62,7 @@ body {
 
   .card-text .cooking {
     font-size: 1rem;
+    margin-bottom: 10rem;
   }
 }
 
