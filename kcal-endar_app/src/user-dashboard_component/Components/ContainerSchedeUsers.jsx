@@ -17,25 +17,26 @@ export function ContainerSchedeUsers() {
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/doc/5");
+        const response = await axios.get("http://localhost:3000/doc/1");
         if (response.data.user) {
           const doc = response.data.user;
-            console.log(doc);
-          const repeatDoc = 8;
-          const repeatedDocs = Array.from({ length: repeatDoc }, () => doc);
-            console.log(repeatedDocs);
-          const cardRowIndex = 1; 
-          for (let i = 0; i <repeatedDocs.length; i += cardRowIndex) {
-        setCardForRow((prev) => [
-          ...prev,
-          repeatedDocs.slice(i, i + cardRowIndex),
-        ]);
-        } 
+             console.log(doc);
+          const repeatCount = 8;
+          const repeatedDoc =  Array.from({ length: repeatCount }, () => doc);
+             console.log(repeatedDoc);
+          const cardRowIndex = 1;
+          for (let i = 0; i < repeatedDoc.length; i += cardRowIndex) {
+            setCardForRow((prev) => [
+              ...prev,
+              repeatedDoc.slice(i, i + cardRowIndex),
+            ]);
+          }
         } else {
-          console.log("array vuoto");
+          throw new Error ('uffa')
+         
         }
       } catch (error) {
-        console.error(error.message, ": Errore durante la richiesta");
+        console.error(error.response.data.message, "Errore durante la richiesta");
       }
     };
     fetchDoctor();
@@ -93,8 +94,9 @@ export function ContainerSchedeUsers() {
               <ButtonScheda
                 key={utente.id}
                 monthPlanner={"meal planner: january"}
-                name= {` from doctor: ${utente.name}`}
+                name={` from doctor: ${utente.name}`}
                 surname={utente.surname}
+            
               />
             ))}
           </SwiperSlide>

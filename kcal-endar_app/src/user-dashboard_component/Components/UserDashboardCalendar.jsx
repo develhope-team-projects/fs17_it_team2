@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useContext } from "react";
+import axios from "axios";
 import "../Style/UserDashboardCalendar.css";
-import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import {
   Eventcalendar,
   snackbar,
@@ -10,92 +11,151 @@ import {
   Input,
   Textarea,
   formatDate,
-  getJson,
   SegmentedGroup,
   SegmentedItem,
-} from '@mobiscroll/react';
+} from "@mobiscroll/react";
 
 setOptions({
-  theme: 'windows',
-  themeVariant: 'light'
+  theme: "windows",
+  themeVariant: "light",
 });
 
 const types = [
   {
     id: 1,
-    name: 'Colazione',
-    color: '#e20f0f',
-    kcal: '300 - 400 kcal',
-    icon: '🍳',
+    name: "Colazione",
+    color: "#e20f0f",
+    kcal: "300 - 400 kcal",
+    icon: "🍳",
   },
   {
     id: 2,
-    name: 'Snack 1',
-    color: '#157d13',
-    kcal: '100 - 200 kcal',
-    icon: '🍌',
+    name: "Snack 1",
+    color: "#157d13",
+    kcal: "100 - 200 kcal",
+    icon: "🍌",
   },
   {
     id: 3,
-    name: 'Pranzo',
-    color: '#32a6de',
-    kcal: '500 - 700 kcal',
-    icon: '🍜',
+    name: "Pranzo",
+    color: "#32a6de",
+    kcal: "500 - 700 kcal",
+    icon: "🍜",
   },
   {
     id: 4,
-    name: 'Snack 2',
-    color: '#68169c',
-    kcal: '100 - 200 kcal',
-    icon: '🥨',
+    name: "Snack 2",
+    color: "#68169c",
+    kcal: "100 - 200 kcal",
+    icon: "🥨",
   },
   {
     id: 5,
-    name: 'Cena',
-    color: '#e29d1d',
-    kcal: '400 - 600 kcal',
-    icon: '🥙',
+    name: "Cena",
+    color: "#e29d1d",
+    kcal: "400 - 600 kcal",
+    icon: "🥙",
   },
 ];
 
 const viewSettings = {
   timeline: {
-    type: 'week',
+    type: "week",
     eventList: true,
   },
 };
 
 const responsivePopup = {
   medium: {
-    display: 'center',
+    display: "center",
     width: 400,
     fullScreen: false,
     touchUi: false,
     showOverlay: false,
   },
 };
+import { useUser } from "../../-shared/UserContext";
 
 export function UserDashboardCalendar() {
+  const { userId, login } = useUser();
   const [myMeals, setMyMeals] = React.useState([]);
   const [tempMeal, setTempMeal] = React.useState(null);
   const [isOpen, setOpen] = React.useState(false);
   const [isEdit, setEdit] = React.useState(false);
-  const [name, setName] = React.useState('');
-  const [calories, setCalories] = React.useState('');
-  const [notes, setNotes] = React.useState('');
-  const [headerText, setHeader] = React.useState('');
+  const [name, setName] = React.useState("");
+  const [calories, setCalories] = React.useState("");
+  const [notes, setNotes] = React.useState("");
+  const [headerText, setHeader] = React.useState("");
   const [type, setType] = React.useState(1);
 
+  // ...
+  const storedUserId = localStorage.getItem("userId");
+
   React.useEffect(() => {
-    //fa il fetch dei dati, da inserire api nostra
-    getJson(
-      'https://trial.mobiscroll.com/meal-planner/',
-      (events) => {
-        setMyMeals(events);
-      },
-      'json',
-    );
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/meals/${storedUserId}`);
+        setMyMeals(response.data.meals);
+        console.log(response.data.meals);
+      } catch (error) {
+        console.error(
+          "Errore nel recupero degli eventi:",
+          error.response.data.message
+        );
+      }
+    };
+
+    fetchData();
   }, []);
+
+  const addMeal = async (newMeal) => {
+    try {
+      newMeal.start = new Date(newMeal.start);
+      newMeal.eend = new Date(newMeal.eend);
+      newMeal.start.setDate(newMeal.start.getDate() + 1);
+      newMeal.eend.setDate(newMeal.eend.getDate() + 1);
+      const response = await axios.post(
+        `http://localhost:3000/meals/${storedUserId}`,
+        newMeal
+      );
+
+      // Aggiorna immediatamente lo stato con il nuovo pasto
+      setMyMeals((prevMeals) => [...prevMeals, response.data]);
+
+      setOpen(false);
+    } catch (error) {
+      console.error("Errore nell'aggiunta del pasto:", error);
+    }
+  };
+
+  
+
+  const updateMeal = async (updatedMeal) => {
+    try {
+      await axios.put(
+        `http://localhost:3000/meals/${storedUserId}/${updatedMeal.id}`,
+        updatedMeal
+      );
+      console.log(userId, 'userid di calendar')
+      const updatedMeals = myMeals.map((meal) =>
+        meal.id === updatedMeal.id ? updatedMeal : meal
+      );
+      setMyMeals(updatedMeals);
+      setOpen(false);
+    } catch (error) {
+      console.error("Errore nell'aggiornamento del pasto:", error.message);
+    }
+  };
+
+  const deleteMeal = async (mealId) => {
+    try {
+      await axios.delete(`http://localhost:3000/meals/${userId}/${mealId.id}`);
+      setMyMeals((prevMeals) => prevMeals.filter((meal) => meal.id !== mealId));
+      setOpen(false);
+    } catch (error) {
+      console.error("Errore nell'eliminazione del pasto:", error.message);
+    }
+  };
 
   const saveEvent = React.useCallback(() => {
     const newEvent = {
@@ -104,9 +164,17 @@ export function UserDashboardCalendar() {
       calories: calories,
       notes: notes,
       start: tempMeal.start,
-      end: tempMeal.end,
+      eend: tempMeal.end,
       resource: tempMeal.resource,
     };
+
+    const setDate = (newMeal) => {
+      newMeal.start = new Date(newMeal.start);
+      newMeal.eend = new Date(newMeal.eend);
+      newMeal.start.setDate(newMeal.start.getDate() - 1);
+      newMeal.eend.setDate(newMeal.eend.getDate() - 1);
+    };
+
     if (isEdit) {
       // update the event in the list
       const index = myMeals.findIndex((x) => x.id === tempMeal.id);
@@ -114,16 +182,20 @@ export function UserDashboardCalendar() {
 
       newEventList.splice(index, 1, newEvent);
       setMyMeals(newEventList);
+      updateMeal(newEvent);
     } else {
       // add the new event to the list
       setMyMeals([...myMeals, newEvent]);
+      addMeal(newEvent);
+      setDate(newEvent);
+     
     }
     // close the popup
     setOpen(false);
-  }, [isEdit, myMeals, calories, notes, name, tempMeal]);
+  }, [isEdit, myMeals, calories, notes, name, tempMeal, updateMeal]);
 
   const deleteEvent = React.useCallback(
-    (event) => {
+    async (event) => {
       setMyMeals(myMeals.filter((item) => item.id !== event.id));
       setTimeout(() => {
         snackbar({
@@ -131,13 +203,14 @@ export function UserDashboardCalendar() {
             action: () => {
               setMyMeals((prevEvents) => [...prevEvents, event]);
             },
-            text: 'Undo',
+            text: "Undo",
           },
-          message: 'Event deleted',
+          message: "Event deleted",
         });
       });
+      deleteMeal(event);
     },
-    [myMeals],
+    [myMeals]
   );
 
   const loadPopupForm = React.useCallback((event) => {
@@ -156,7 +229,7 @@ export function UserDashboardCalendar() {
   }, []);
 
   const notesChange = React.useCallback((ev) => {
-    setNotes(ev.target.checked);
+    setNotes(ev.target.value);
   }, []);
 
   const onDeleteClick = React.useCallback(() => {
@@ -168,7 +241,11 @@ export function UserDashboardCalendar() {
   const onEventClick = React.useCallback(
     (args) => {
       const event = args.event;
-      setHeader('<div>New meal</div><div class="md-meal-type">' + formatDate('DDDD, DD MMMM YYYY', new Date(event.start)) + '</div>');
+      setHeader(
+        '<div>New meal</div><div class="md-meal-type">' +
+          formatDate("DDDD, DD MMMM YYYY", new Date(event.start)) +
+          "</div>"
+      );
       setType(event.resource);
       setEdit(true);
       setTempMeal({ ...event });
@@ -176,7 +253,7 @@ export function UserDashboardCalendar() {
       loadPopupForm(event);
       setOpen(true);
     },
-    [loadPopupForm],
+    [loadPopupForm]
   );
 
   const onEventCreated = React.useCallback(
@@ -186,7 +263,11 @@ export function UserDashboardCalendar() {
         return obj.id === event.resource;
       });
       setHeader(
-        '<div>' + resource.name + '</div><div class="md-meal-type">' + formatDate('DDDD, DD MMMM YYYY', new Date(event.start)) + '</div>',
+        "<div>" +
+          resource.name +
+          '</div><div class="md-meal-type">' +
+          formatDate("DDDD, DD MMMM YYYY", new Date(event.start)) +
+          "</div>"
       );
       setType(event.resource);
       setEdit(false);
@@ -196,7 +277,7 @@ export function UserDashboardCalendar() {
       // open the popup
       setOpen(true);
     },
-    [loadPopupForm],
+    [loadPopupForm]
   );
 
   const typeChange = React.useCallback(
@@ -205,40 +286,40 @@ export function UserDashboardCalendar() {
       setType(value);
       setTempMeal({ ...tempMeal, resource: value });
     },
-    [tempMeal],
+    [tempMeal]
   );
 
   const onEventDeleted = React.useCallback(
     (args) => {
       deleteEvent(args.event);
     },
-    [deleteEvent],
+    [deleteEvent]
   );
 
   // popup options
   const popupButtons = React.useMemo(() => {
     if (isEdit) {
       return [
-        'cancel',
+        "cancel",
         {
           handler: () => {
             saveEvent();
           },
-          keyCode: 'enter',
-          text: 'Save',
-          cssClass: 'mbsc-popup-button-primary',
+          keyCode: "enter",
+          text: "Save",
+          cssClass: "mbsc-popup-button-primary",
         },
       ];
     } else {
       return [
-        'cancel',
+        "cancel",
         {
           handler: () => {
             saveEvent();
           },
-          keyCode: 'enter',
-          text: 'Add',
-          cssClass: 'mbsc-popup-button-primary',
+          keyCode: "enter",
+          text: "Add",
+          cssClass: "mbsc-popup-button-primary",
         },
       ];
     }
@@ -254,7 +335,7 @@ export function UserDashboardCalendar() {
 
   const extendDefaultEvent = React.useCallback((args) => {
     return {
-      title: 'New meal',
+      title: "New meal",
       allDay: true,
     };
   }, []);
@@ -262,8 +343,14 @@ export function UserDashboardCalendar() {
   const renderMyResource = (resource) => {
     return (
       <div className="md-meal-planner-cont">
-        <div className="md-meal-planner-title" style={{ color: resource.color }}>
-          <span className="md-meal-planner-icon" dangerouslySetInnerHTML={{ __html: resource.icon }}></span>
+        <div
+          className="md-meal-planner-title"
+          style={{ color: resource.color }}
+        >
+          <span
+            className="md-meal-planner-icon"
+            dangerouslySetInnerHTML={{ __html: resource.icon }}
+          ></span>
           {resource.name}
         </div>
         <div className="md-meal-planner-kcal">{resource.kcal}</div>
@@ -276,7 +363,11 @@ export function UserDashboardCalendar() {
     return (
       <div className="md-meal-planner-event">
         <div className="md-meal-planner-event-title">{event.title}</div>
-        {event.calories && <div className="md-meal-planner-event-desc">Calories {event.calories} kcal</div>}
+        {event.calories && (
+          <div className="md-meal-planner-event-desc">
+            Calories {event.calories} kcal
+          </div>
+        )}
       </div>
     );
   }, []);
@@ -299,6 +390,7 @@ export function UserDashboardCalendar() {
         renderScheduleEventContent={myScheduleEvent}
         cssClass="md-meal-planner-calendar"
       />
+
       <Popup
         display="bottom"
         fullScreen={true}
@@ -326,12 +418,17 @@ export function UserDashboardCalendar() {
         </div>
         {isEdit && (
           <div className="mbsc-button-group">
-            <Button className="mbsc-button-block" color="danger" variant="outline" onClick={onDeleteClick}>
+            <Button
+              className="mbsc-button-block"
+              color="danger"
+              variant="outline"
+              onClick={onDeleteClick}
+            >
               Delete meal
             </Button>
           </div>
         )}
       </Popup>
     </div>
-  )
+  );
 }

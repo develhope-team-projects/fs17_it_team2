@@ -1,8 +1,10 @@
-import { useState } from "react";
-import {useNavigate} from "react-router-dom"
+import {useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useUser } from "../-shared/UserContext";
 
 export function UseLogin() {
+  const { login } = useUser();
   const [dataLogin, setDataLogin] = useState({
     username: "",
     email: "",
@@ -14,7 +16,7 @@ export function UseLogin() {
     invalidPassword: "",
   });
 
-  const navigateLogin = useNavigate()
+  const navigateLogin = useNavigate();
 
   function handlerChange(e) {
     const { name, value } = e.target;
@@ -24,53 +26,60 @@ export function UseLogin() {
     }));
   }
 
+  // ...
 
-  const handlerBtn = (evt) => {
+  const handlerBtn = async (evt) => {
     evt.preventDefault();
     const { email, password } = dataLogin;
 
     setErrorsLogin({
-      invalidUsernameEmail:!email
-        ? "l'email non esiste"
-        : "",
+      invalidUsernameEmail: !email ? "l'email non esiste" : "",
       invalidPassword: !password ? "password non corretta" : "",
     });
 
-    if ( email && password) {
-      const apiUrl = `http://localhost:3000/login`;
-      axios
-        .post(apiUrl, dataLogin)
-        .then((res) => {
-          console.log(res.data.message);
+    if (email && password) {
+      const loginUser = `http://localhost:3000/login`;
 
-          // Verifica il tipo di utente (user o medico) e reindirizza di conseguenza
-          const userType = res.data.userType;
+      try {
+        const res = await axios.post(loginUser, dataLogin);
+        console.log(res.data.id);
 
-          if (userType === "user") {
-            navigateLogin("/user-dashboard");
-          } else if (userType === "doc") {
-            navigateLogin("/doctor-dashboard");
-          } else {
-            console.error(res.data.message);
-          }
-        })
-        .catch((error) => {
-          if (error.response) {
-            // La richiesta è stata effettuata e il server ha risposto con uno stato diverso da 2xx
-            console.error("Errore lato server:", error.response.data.message);
-          } else if (error.request) {
-            // La richiesta è stata effettuata, ma non è stata ricevuta alcuna risposta
-            console.error("Nessuna risposta dal server");
-          } else {
-            // Altri tipi di errori
-            console.error("Errore durante la richiesta:", error.message);
-          }
-        });
+        const userType = res.data.userType;
+        if (userType === "user") {
+          navigateLogin("/user-dashboard");
+        } else if (userType === "doc") {
+          navigateLogin("/doctor-dashboard");
+        } else {
+              console.error(res.data.message);
+        }
+              // estraiamo l'id
+              console.log(res.data.id, "first userId 'api url'");
+        const userId = res.data.id;
 
+
+        login(userId).then(() => {
+              console.log("Valore catturato con successo!");
+        localStorage.setItem("userId", userId);
+        }).catch((err) => console.log('uffaaaaaaaaaaaaaaaaa', err))  
+ 
+ 
+        const getMealsPlanner = `http://localhost:3000/meals/${userId}`;
+              console.log(userId, "second userId 'getMealsPlanner' ");
+        const response = await axios.get(getMealsPlanner);
+              console.log(response.data);
+      } catch (error) {
+        if (error.response) {
+              console.error("Errore lato server:", error.response.data.message);
+        } else if (error.request) {
+              console.error("Nessuna risposta dal server");
+        } else {
+              console.error("Errore durante la richiesta:", error.message);
+        }
+      }
     }
   };
 
-
+  // ...
   return {
     dataLogin,
     errorsLogin,

@@ -9,12 +9,15 @@ body {
   width: 72rem;
   margin: 0 auto;
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .titleRecipe {
   text-align: center;
-  font-size: 2rem;
-  color: black;
+  font-size: 2.8rem;
 }
 
 .card-text .cooking {
@@ -22,8 +25,7 @@ body {
 }
 
 .recipe-section h3 {
-  color: black;
-  font-size: 1.5rem;
+  font-size: 2.3rem;
 }
 
 .recipe-section ul {
@@ -34,23 +36,42 @@ body {
   margin-bottom: 8px;
 }
 
-@media (max-width: 1280px) {
-  .card {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 480px) {
+  
   .cardRecipe {
     width: 100%;
+    min-height: 200vh;
   }
 
-  .titleRecipe1 {
-    font-size: 1.5rem;
+  .titleRecipe {
+    font-size: 2.3rem;
   }
 
   .recipe-section h3 {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+  }
+
+  .recipe-section li {
+    margin-bottom: 6px;
+  }
+
+  .card-text .cooking {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .cardRecipe {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .titleRecipe {
+    font-size: 2rem;
+  }
+
+  .recipe-section h3 {
+    font-size: 2.3rem;
   }
 
   .recipe-section li {
@@ -58,30 +79,45 @@ body {
   }
 
   .card-text .cooking {
-    font-size: 1rem;
+    font-size: 2rem;
   }
 }
 
-@media (max-width: 480px) {
-  .titleRecipe1 {
-    font-size: 1.2rem;
+@media (min-width: 769px) {
+  .cardRecipe {
+    width: 70%;
+    min-height: 90vh;
+    background-color: white;
+  }
+
+  .titleRecipe {
+    font-size: 1.7rem;
   }
 
   .recipe-section h3 {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   .recipe-section li {
     margin-bottom: 3px;
   }
 
-  .titleRecipe1,
+  .titleRecipe,
   .recipe-section h3,
   .recipe-section li {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
   }
 
   .card-text .cooking {
-    font-size: 0.8rem;
+    font-size: 1.3rem;
   }
 }
+
+@media (min-width : 1280px){
+  .cardRecipe {
+      width: 70%;
+      min-height: 90vh;
+      background-color: white;
+    }
+}
+
