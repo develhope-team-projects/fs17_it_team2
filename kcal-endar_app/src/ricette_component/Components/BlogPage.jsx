@@ -77,7 +77,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/insalataCeciVerdure.jpeg"
+            src="src/-assets/media/insalataCeciVerdure.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -100,7 +100,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/insalataQuinoaeVerdure.jpeg"
+            src="/src/-assets/media/insalataQuinoaeVerdure.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -123,7 +123,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/polloSalsaYogurt.jpeg"
+            src="/src/-assets/media/polloSalsaYogurt.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -146,7 +146,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/salmoneAsparagi.jpeg"
+            src="/src/-assets/media/salmoneAsparagi.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -169,7 +169,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/zuppaLenticchie.jpeg"
+            src="/src/-assets/media/zuppaLenticchie.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -192,7 +192,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/sformatoMelanzane.jpeg"
+            src="/src/-assets/media/sformatoMelanzane.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -215,7 +215,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/insalataCeciVerdure.jpeg"
+            src="/src/-assets/media/insalataCeciVerdure.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -238,7 +238,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/insalataQuinoaeVerdure.jpeg"
+            src="/src/-assets/media/insalataQuinoaeVerdure.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -261,7 +261,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/polloSalsaYogurt.jpeg"
+            src="/src/-assets/media/polloSalsaYogurt.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -284,7 +284,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/salmoneAsparagi.jpeg"
+            src="/src/-assets/media/salmoneAsparagi.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -307,7 +307,7 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/zuppaLenticchie.jpeg"
+            src="/src/-assets/media/zuppaLenticchie.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -327,10 +327,14 @@ export function BlogPage() {
           </Card.Body>
         </Card>
 
-        <Card style={{ width: "21rem" }} className="custom-card-ricette" id="recipe12">
+        <Card
+          style={{ width: "21rem" }}
+          className="custom-card-ricette"
+          id="recipe12"
+        >
           <Card.Img
             variant="top"
-            src="/src/imgRicetteAnteprima/sformatoMelanzane.jpeg"
+            src="/src/-assets/media/sformatoMelanzane.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
@@ -353,6 +357,3 @@ export function BlogPage() {
     </div>
   );
 }
-
-
-

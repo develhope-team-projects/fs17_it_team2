@@ -8,6 +8,7 @@ body {
 .cardRecipe {
   width: 72rem;
   margin: 0 auto;
+  margin-bottom: 5rem;
 }
 
 .titleRecipe {
