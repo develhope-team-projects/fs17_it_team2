@@ -95,6 +95,7 @@ export function UserDashboardCalendar() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/meals/${storedUserId}`);
+        console.log(storedUserId, "porco allah")
         setMyMeals(response.data.meals);
         console.log(response.data.meals);
       } catch (error) {

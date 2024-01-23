@@ -18,7 +18,7 @@ const setupDb = async () => {
         username TEXT NOT NULL,
         email TEXT NOT NULL,
         password TEXT NOT NULL,
-        token TEXT
+        token TEXT,
         docData_id INT REFERENCES docData(id) ON DELETE CASCADE
       );
     `);
@@ -42,8 +42,9 @@ const setupDb = async () => {
         surname TEXT NOT NULL,
         username TEXT NOT NULL,
         email TEXT NOT NULL,
-        token TEXT,
-        password TEXT NOT NULL
+        password TEXT NOT NULL,
+        token TEXT
+
       );
     `);
 
@@ -56,17 +57,13 @@ const setupDb = async () => {
     /* ------------------------------------------------------------------------------------------------------ */
     /* ------------------------------------------------------------------------------------------------------ */
 
-    /* ------------------------------------------------------------------------------------------------------ */
-    /* ------------------------------------------------------------------------------------------------------ */
-    /* ------------------------------------------------------------------------------------------------------ */
-
     // Creazione tabella relazionale meals
-    await db.oneOrNone(`
+    await db.none(`
     DROP TABLE IF EXISTS meals;
     CREATE TABLE meals (
         id SERIAL PRIMARY KEY,
-        start TIMESTAMPZ,
-        eEnd TIMESTAMPZ,
+        start TIMESTAMP,
+        eEnd TIMESTAMP,
         title VARCHAR(255),
         resource INTEGER,
         calories INTEGER,
