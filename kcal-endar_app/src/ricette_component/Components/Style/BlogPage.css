@@ -3,6 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
+  padding-top: 8rem;
 }
 
 .mainTitle-ricette {
@@ -23,6 +24,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   justify-content: center;
+  padding-bottom: 5rem;
 }
 
 .custom-card-ricette img {
