@@ -61,17 +61,16 @@ const setupDb = async () => {
     /* ------------------------------------------------------------------------------------------------------ */
 
     // Creazione tabella relazionale meals
-    await db.none(`
+    await db.oneOrNone(`
     DROP TABLE IF EXISTS meals;
     CREATE TABLE meals (
         id SERIAL PRIMARY KEY,
-        start TIMESTAMP,
-        eEnd TIMESTAMP,
+        start TIMESTAMPZ,
+        eEnd TIMESTAMPZ,
         title VARCHAR(255),
         resource INTEGER,
         calories INTEGER,
         notes TEXT,
-        allDay BOOLEAN,
         userData_id INT REFERENCES userData(id) ON DELETE CASCADE,
         docData_id INT REFERENCES docData(id) ON DELETE CASCADE
     );

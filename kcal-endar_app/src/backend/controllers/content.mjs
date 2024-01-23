@@ -282,7 +282,7 @@ const createFullMealsPlanner = async (req, res) => {
     // Invia la risposta con i dati del pasto appena creato
     res.status(201).json({result, message: "dati ricevuti correttamente"});
   } catch (error) {
-    console.error("Errore nell'inserimento del pasto:", error);
+    console.error("Errore nell'inserimento del pasto:", error.message);
     res.status(500).send("Internal Server Error");
   }
 };
@@ -291,10 +291,60 @@ const createFullMealsPlanner = async (req, res) => {
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
+const updateFullMealsPlanner = async (req, res) => {
+  const { title, calories, notes, eEnd, start, resource } = req.body;
+  const { mealId, userId } = req.params;
+
+  try {
+    const result = await db.oneOrNone(
+      `
+      UPDATE meals
+      SET 
+        title = COALESCE($1, title),
+        calories = COALESCE($2, calories),
+        notes = COALESCE($3, notes),
+        start = COALESCE($4, start),
+        eEnd = COALESCE($5, eend),
+        resource = COALESCE($6, resource)
+      WHERE id = $7 AND userData_id = $8
+      RETURNING *;
+
+          `,
+      [title, calories, notes, start, eEnd, resource, mealId, userId]
+    );
+
+    res.status(201).json({ result, message: "dati aggiornati correttamente" });
+  } catch (error) {
+    console.error("Errore nell'aggiornamento del pasto:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
+const deleteFullMealsPlanner = async (req, res) => {
+  const {mealId, userId } = req.params;
+
+  try {
+    // Esegui la query per inserire un nuovo pasto nel database
+    const result = await db.one(
+      `
+     DELETE FROM meals
+      WHERE id = $1 AND userData_id = $2
+      RETURNING *;
+    `,
+      [mealId, userId ]
+    );
+
+    // Invia la risposta con i dati del pasto appena creato
+    res.status(201).json({ result, message: "dati cancellati correttamente" });
+  } catch (error) {
+    console.error("Errore nell'inserimento del pasto:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
 
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
@@ -313,4 +363,6 @@ export {
   getDoc,
   getUserMealsPlanner,
   createFullMealsPlanner,
+  updateFullMealsPlanner,
+  deleteFullMealsPlanner
 };

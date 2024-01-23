@@ -74,10 +74,10 @@ const responsivePopup = {
     showOverlay: false,
   },
 };
-  import { useUser } from "../../-shared/UserContext";
+import { useUser } from "../../-shared/UserContext";
 
 export function UserDashboardCalendar() {
-             const {userId, login} =  useUser()
+  const { userId, login } = useUser();
   const [myMeals, setMyMeals] = React.useState([]);
   const [tempMeal, setTempMeal] = React.useState(null);
   const [isOpen, setOpen] = React.useState(false);
@@ -89,13 +89,12 @@ export function UserDashboardCalendar() {
   const [type, setType] = React.useState(1);
 
   // ...
+  const storedUserId = localStorage.getItem("userId");
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/meals/${userId}`
-        );
+        const response = await axios.get(`http://localhost:3000/meals/${storedUserId}`);
         setMyMeals(response.data.meals);
         console.log(response.data.meals);
       } catch (error) {
@@ -116,7 +115,7 @@ export function UserDashboardCalendar() {
       newMeal.start.setDate(newMeal.start.getDate() + 1);
       newMeal.eend.setDate(newMeal.eend.getDate() + 1);
       const response = await axios.post(
-        `http://localhost:3000/meals/1`,
+        `http://localhost:3000/meals/${storedUserId}`,
         newMeal
       );
 
@@ -129,33 +128,34 @@ export function UserDashboardCalendar() {
     }
   };
 
-  /* 
+  
+
   const updateMeal = async (updatedMeal) => {
     try {
       await axios.put(
-        `http://localhost:3000/meals/${userId}/${updatedMeal.id}`,
+        `http://localhost:3000/meals/${storedUserId}/${updatedMeal.id}`,
         updatedMeal
       );
+      console.log(userId, 'userid di calendar')
       const updatedMeals = myMeals.map((meal) =>
         meal.id === updatedMeal.id ? updatedMeal : meal
       );
       setMyMeals(updatedMeals);
       setOpen(false);
     } catch (error) {
-      console.error("Errore nell'aggiornamento del pasto:", error);
+      console.error("Errore nell'aggiornamento del pasto:", error.message);
     }
   };
 
   const deleteMeal = async (mealId) => {
     try {
-      await axios.delete(`http://localhost:3000/meals/${userId}/${mealId}`);
+      await axios.delete(`http://localhost:3000/meals/${userId}/${mealId.id}`);
       setMyMeals((prevMeals) => prevMeals.filter((meal) => meal.id !== mealId));
       setOpen(false);
     } catch (error) {
-      console.error("Errore nell'eliminazione del pasto:", error);
+      console.error("Errore nell'eliminazione del pasto:", error.message);
     }
   };
- */
 
   const saveEvent = React.useCallback(() => {
     const newEvent = {
@@ -182,18 +182,20 @@ export function UserDashboardCalendar() {
 
       newEventList.splice(index, 1, newEvent);
       setMyMeals(newEventList);
+      updateMeal(newEvent);
     } else {
       // add the new event to the list
       setMyMeals([...myMeals, newEvent]);
       addMeal(newEvent);
       setDate(newEvent);
+     
     }
     // close the popup
     setOpen(false);
-  }, [isEdit, myMeals, calories, notes, name, tempMeal]);
+  }, [isEdit, myMeals, calories, notes, name, tempMeal, updateMeal]);
 
   const deleteEvent = React.useCallback(
-    (event) => {
+    async (event) => {
       setMyMeals(myMeals.filter((item) => item.id !== event.id));
       setTimeout(() => {
         snackbar({
@@ -206,6 +208,7 @@ export function UserDashboardCalendar() {
           message: "Event deleted",
         });
       });
+      deleteMeal(event);
     },
     [myMeals]
   );
@@ -226,7 +229,7 @@ export function UserDashboardCalendar() {
   }, []);
 
   const notesChange = React.useCallback((ev) => {
-    setNotes(ev.target.checked);
+    setNotes(ev.target.value);
   }, []);
 
   const onDeleteClick = React.useCallback(() => {

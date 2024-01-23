@@ -57,9 +57,10 @@ export function UseLogin() {
         const userId = res.data.id;
 
 
- login(userId).then(() => {
-   console.log("Valore catturato con successo!");
- }).catch((err) => console.log('uffaaaaaaaaaaaaaaaaa', err))  
+        login(userId).then(() => {
+              console.log("Valore catturato con successo!");
+        localStorage.setItem("userId", userId);
+        }).catch((err) => console.log('uffaaaaaaaaaaaaaaaaa', err))  
  
  
         const getMealsPlanner = `http://localhost:3000/meals/${userId}`;

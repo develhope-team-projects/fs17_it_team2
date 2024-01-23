@@ -6,8 +6,10 @@ import {
   getUser,
   getDoc,
   getUserMealsPlanner,
- 
-  createFullMealsPlanner
+  createFullMealsPlanner,
+  updateFullMealsPlanner,
+  deleteFullMealsPlanner,
+  
 } from "./controllers/content.mjs";
 import express from "express";
 import cors from "cors";
@@ -23,6 +25,10 @@ app.get("/user/:id", getUser);
 app.get("/doc/:id", getDoc);
 app.get("/meals/:userId", getUserMealsPlanner);
 app.post("/meals/:userId", createFullMealsPlanner);
+app.put("/meals/:userId/:mealId", updateFullMealsPlanner);
+app.delete("/meals/:userId/:mealId", deleteFullMealsPlanner);
+
+
 
 
 /* 
