@@ -1,0 +1,45 @@
+.chi-siamo-container {
+    margin-left: 10%;
+    margin-bottom: 5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    width: 80%;
+    background-color: white;
+}
+
+.chi-siamo-h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.chi-siamo-p-img {
+    padding: 3rem 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.chi-siamo-p {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 2.5rem 2rem;
+}
+
+.chi-siamo-p h3 {
+    padding-bottom: 1rem;
+}
+
+.chi-siamo-image {
+    width: 35%;
+}
+
+.chi-siamo-p-img-rev {
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+}
