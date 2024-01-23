@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import axios from "axios";
 import "../Style/UserDashboardCalendar.css";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
@@ -77,7 +77,7 @@ const responsivePopup = {
 import { useUser } from "../../-shared/UserContext";
 
 export function UserDashboardCalendar() {
-  const { userId, login } = useUser();
+  const { userId } = useUser();
   const [myMeals, setMyMeals] = React.useState([]);
   const [tempMeal, setTempMeal] = React.useState(null);
   const [isOpen, setOpen] = React.useState(false);
