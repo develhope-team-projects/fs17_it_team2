@@ -18,12 +18,11 @@
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  font-style: italic;
   color: var(--aviation-blue)
 }
 
 .scheda-text {
-  ;
+
   font-weight: light;
 }
 
