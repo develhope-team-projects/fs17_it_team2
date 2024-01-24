@@ -9,9 +9,7 @@ const setupDb = async () => {
     /* ------------------------------------------------------------------------------------------------------ */
     // Creazione tabella userData
     await db.none(`
-      DROP TABLE IF EXISTS userData CASCADE;
-
-      CREATE TABLE userData (
+      CREATE TABLE IF NOT EXISTS userData (
         id SERIAL NOT NULL PRIMARY KEY,
         name TEXT NOT NULL,
         surname TEXT NOT NULL,
@@ -35,8 +33,7 @@ const setupDb = async () => {
 
     // Creazione tabella docData
     await db.none(`
-      DROP TABLE IF EXISTS docData CASCADE;
-      CREATE TABLE docData (
+      CREATE TABLE IF NOT EXISTS docData (
         id SERIAL NOT NULL PRIMARY KEY,
         name TEXT NOT NULL,
         surname TEXT NOT NULL,
@@ -59,8 +56,7 @@ const setupDb = async () => {
 
     // Creazione tabella relazionale meals
     await db.none(`
-    DROP TABLE IF EXISTS meals;
-    CREATE TABLE meals (
+    CREATE TABLE IF NOT EXISTS meals (
         id SERIAL PRIMARY KEY,
         start TIMESTAMP,
         eEnd TIMESTAMP,

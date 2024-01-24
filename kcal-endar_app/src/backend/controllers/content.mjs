@@ -128,11 +128,11 @@ const login = async (req, res) => {
         id: userData.id,
         email,
       };
-      const { SECRET = "abcd" } = process.env;
+      const { SECRET = " " } = process.env;
       const token = jwt.sign(payload, SECRET);
       console.log(token);
 
-      await db.none(`UPDATE userData SET token=$2 WHERE id=$1`, [
+      await db.oneOrNone(`UPDATE userData SET token=$2 WHERE id=$1`, [
         userData.id,
         token,
       ]);
@@ -150,7 +150,7 @@ const login = async (req, res) => {
     }
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({ message: "Errore durante la registrazione" });
+    res.status(500).json({ message: "Errore durante il login" });
   }
 };
 /* ------------------------------------------------------------------------------------------------------ */
