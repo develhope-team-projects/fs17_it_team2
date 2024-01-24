@@ -10,6 +10,7 @@ import { Signup } from "./signup_component/SignUp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ChiSiamo } from "./chi_siamo_section/ChiSiamo";
 import { UserProvider } from "./-shared/UserContext";
+import { ProfSection } from "./professionisti_section/ProfSection";
 
 export const App = () => {
   return (
@@ -24,7 +25,8 @@ export const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-          <Route path="/chi-siamo" element={<ChiSiamo />} />
+            <Route path="/chi-siamo" element={<ChiSiamo />} />
+            <Route path="/professionisti" element={<ProfSection/>}/>
             <Route path="/ricette" element={<Ricette />} />
           </Routes>
         </BrowserRouter>
