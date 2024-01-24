@@ -8,7 +8,12 @@ import { Footer } from "./footer/footer";
 import { Signup } from "./signup_component/SignUp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ChiSiamo } from "./chi_siamo_section/ChiSiamo";
+import { ComeFunziona } from "./come-funziona_component/comeFunziona";
+import { UserProvider } from "./-shared/UserContext";
 import { AllRecipes } from "./ricette_component/Components/AllRecipes";
+
+
+
 
 export const App = () => {
   return (
@@ -23,6 +28,8 @@ export const App = () => {
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
             <Route path="/chi-siamo" element={<ChiSiamo />} />
+            <Route path="/come-funziona" element={<ComeFunziona />} />
+          </Routes>
           </Routes>{" "}
           <AllRecipes />
         </BrowserRouter>
