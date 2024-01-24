@@ -9,7 +9,6 @@ import { Signup } from "./signup_component/SignUp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ChiSiamo } from "./chi_siamo_section/ChiSiamo";
 import { ComeFunziona } from "./come-funziona_component/comeFunziona";
-import { UserProvider } from "./-shared/UserContext";
 import { ProfSection } from "./professionisti_section/ProfSection";
 import { AllRecipes } from "./ricette_component/Components/AllRecipes";
 
@@ -28,10 +27,8 @@ export const App = () => {
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/professionisti" element={<ProfSection/>}/>
-            <Route path="/ricette" element={<Ricette />} />
             <Route path="/come-funziona" element={<ComeFunziona />} />
           </Routes>
-          </Routes>{" "}
           <AllRecipes />
         </BrowserRouter>
         <Footer />{" "}
