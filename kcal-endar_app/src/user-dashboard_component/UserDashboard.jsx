@@ -1,6 +1,6 @@
 
-import { ContainerSchedeUsers } from "./Components/ContainerSchedeUsers";
-import { PieChart } from "./Components/PieChart";
+/* import { ContainerSchedeUsers } from "./Components/ContainerSchedeUsers";
+ */import { PieChart } from "./Components/PieChart";
 import { UserDashboardCalendar } from "./Components/UserDashboardCalendar";
 
 
@@ -13,7 +13,7 @@ export function UserDashboard() {
       <div className="chart-container">
         <PieChart  />
       </div>
-      <ContainerSchedeUsers  />
+      {/* <ContainerSchedeUsers  /> */}
       <UserDashboardCalendar  />
     </div>
   );

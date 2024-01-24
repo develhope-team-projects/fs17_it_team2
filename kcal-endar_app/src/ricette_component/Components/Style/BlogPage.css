@@ -1,12 +1,6 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding-top: 8rem;
-}
 
 .mainTitle-ricette {
+  margin-top: 2rem;
   margin-bottom: 2rem;
   text-align: center;
 }

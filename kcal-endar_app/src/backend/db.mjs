@@ -9,24 +9,16 @@ const setupDb = async () => {
     /* ------------------------------------------------------------------------------------------------------ */
     // Creazione tabella userData
     await db.none(`
-      DROP TABLE IF EXISTS userData CASCADE;
-
-      CREATE TABLE userData (
+      CREATE TABLE IF NOT EXISTS userData (
         id SERIAL NOT NULL PRIMARY KEY,
         name TEXT NOT NULL,
         surname TEXT NOT NULL,
         username TEXT NOT NULL,
         email TEXT NOT NULL,
         password TEXT NOT NULL,
-        token TEXT
+        token TEXT,
         docData_id INT REFERENCES docData(id) ON DELETE CASCADE
       );
-    `);
-
-    // Inserimento dati di esempio
-    await db.none(`
-      INSERT INTO userData (name, surname, username, email, password)
-      VALUES ('Mario', 'Rossi', 'MarioRossi', 'mariorossi@gmail.com', 'abcd');
     `);
 
     /* ------------------------------------------------------------------------------------------------------ */
@@ -35,38 +27,28 @@ const setupDb = async () => {
 
     // Creazione tabella docData
     await db.none(`
-      DROP TABLE IF EXISTS docData CASCADE;
-      CREATE TABLE docData (
+      CREATE TABLE IF NOT EXISTS docData (
         id SERIAL NOT NULL PRIMARY KEY,
         name TEXT NOT NULL,
         surname TEXT NOT NULL,
         username TEXT NOT NULL,
         email TEXT NOT NULL,
-        token TEXT,
-        password TEXT NOT NULL
+        password TEXT NOT NULL,
+        token TEXT
+
       );
     `);
-
-    // Inserimento dati di esempio
-    await db.none(`
-      INSERT INTO docData (name, surname, username, email, password)
-      VALUES ('Luca', 'Bianchi', 'LucaBianchi', 'lucabianchi@gmail.com', 'abcd');
-    `);
-    /* ------------------------------------------------------------------------------------------------------ */
-    /* ------------------------------------------------------------------------------------------------------ */
-    /* ------------------------------------------------------------------------------------------------------ */
 
     /* ------------------------------------------------------------------------------------------------------ */
     /* ------------------------------------------------------------------------------------------------------ */
     /* ------------------------------------------------------------------------------------------------------ */
 
     // Creazione tabella relazionale meals
-    await db.oneOrNone(`
-    DROP TABLE IF EXISTS meals;
-    CREATE TABLE meals (
+    await db.none(`
+    CREATE TABLE IF NOT EXISTS meals (
         id SERIAL PRIMARY KEY,
-        start TIMESTAMPZ,
-        eEnd TIMESTAMPZ,
+        start TIMESTAMP,
+        eEnd TIMESTAMP,
         title VARCHAR(255),
         resource INTEGER,
         calories INTEGER,

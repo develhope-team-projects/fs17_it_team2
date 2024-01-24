@@ -1,10 +1,8 @@
-import {useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useUser } from "../-shared/UserContext";
 
 export function UseLogin() {
-  const { login } = useUser();
   const [dataLogin, setDataLogin] = useState({
     username: "",
     email: "",
@@ -56,18 +54,13 @@ export function UseLogin() {
               console.log(res.data.id, "first userId 'api url'");
         const userId = res.data.id;
 
-
-        login(userId).then(() => {
-              console.log("Valore catturato con successo!");
         localStorage.setItem("userId", userId);
-        }).catch((err) => console.log('uffaaaaaaaaaaaaaaaaa', err))  
- 
  
         const getMealsPlanner = `http://localhost:3000/meals/${userId}`;
               console.log(userId, "second userId 'getMealsPlanner' ");
         const response = await axios.get(getMealsPlanner);
-              console.log(response.data);
-      } catch (error) {
+          return response  
+        } catch (error) {
         if (error.response) {
               console.error("Errore lato server:", error.response.data.message);
         } else if (error.request) {
