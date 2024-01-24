@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import './profSection_style.css';
 import '../-common/colors.css';
+import '../-common/media-query.css'
 import doctor from '../-assets/media/doctor.jpg';
 import doc1 from '../-assets/media/doc1.jpeg';
 import doc2 from '../-assets/media/doc2.jpg';
@@ -19,9 +20,22 @@ export function ProfSection() {
                 I nostri professionisti
             </h1>
             <div className='prof-section-p'>
-                <p>
-                    zcbsvbsdkvbdbvdbvblvdfi
-                </p>
+                <div>
+                    <p>
+                        I nostri esperti nutrizionisti e dietologi sono il <b>cuore</b> pulsante di KCALendar.
+                    </p>
+                    <p>
+                        Siamo il vostro collegamento diretto a un team dedicato a ridefinire il vostro 
+                        rapporto con il cibo. <br />
+                        Immaginate di avere un partner di fiducia per interpretare i dati e pianificare
+                        un <b>percorso alimentare</b> su misura per voi.
+                    </p>
+                    <p>
+                        Con KCALendar, trasformiamo ogni scelta alimentare in un passo sicuro verso il vostro benessere. <br />
+                        <b>Contattate</b> i nostri esperti oggi stesso e iniziate il vostro viaggio verso
+                        una vita più sana e appagante.
+                    </p>
+                </div>
                 <img className='prof-section-img' src={doctor} alt="Doctor" />
             </div>
 
@@ -94,7 +108,7 @@ export function ProfSection() {
                             </Card.Title>
                             <Card.Text className='prof-section-card-profession'>
                                 Dietologa <br />
-                                specializzazione: <br /> 
+                                specializzazione: <br />
                                 dieta sportiva
                             </Card.Text>
                             <Card.Text className='prof-section-card-contact'>
@@ -168,6 +182,35 @@ export function ProfSection() {
                                 </a>
                                 <a href='#email'>
                                     luigi.albiero@email.com
+                                </a>
+                            </Card.Text>
+                            <Button variant='primary' className='prof-section-card-button'>
+                                Contattami...
+                            </Button>
+                        </Card.Body>
+                    </Card>
+                </div>
+
+                {/* Card 6 */}
+                <div>
+                    <Card bsPrefix='card' className='prof-section-card-sample'>
+                        <Card.Body className='prof-section-card-body'>
+                            <img className='prof-section-card-img' src={doc6} alt='Doctor' />
+                            <Card.Title>
+                                Zaccaria Rebecca
+                            </Card.Title>
+                            <Card.Text className='prof-section-card-profession'>
+                                Nutrizionista <br />
+                            </Card.Text>
+                            <Card.Text className='prof-section-card-contact'>
+                                <p>
+                                    Contatti:
+                                </p>
+                                <a href='#cellular'>
+                                    +39 336 xxx xxx4
+                                </a>
+                                <a href='#email'>
+                                    zac.rebecca7@email.com
                                 </a>
                             </Card.Text>
                             <Button variant='primary' className='prof-section-card-button'>

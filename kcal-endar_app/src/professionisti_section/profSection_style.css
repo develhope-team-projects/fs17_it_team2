@@ -7,73 +7,176 @@
     background-color: white;
 }
 
-.prof-section-h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
+@media (max-width: 2560px) {
+    .prof-section-h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+    }
+
+    .prof-section-p {
+        padding: 3rem 3rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .prof-section-p div {
+        width: 40rem;
+        margin: 3rem;
+        margin-right: 0rem
+    }
+
+    .prof-section-img {
+        width: 45%;
+    }
+
+    .prof-section-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-left: 4%;
+    }
+
+    .prof-section-card-sample {
+        height: 35rem;
+        width: 22rem;
+        margin: 1rem 1rem;
+        box-shadow: 5px 5px 20px var(--aviation-blue);
+    }
+
+    .prof-section-card-sample:hover {
+        transform: scale(1.1);
+        transition: 500ms;
+    }
+
+    .prof-section-card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .prof-section-card-img {
+        border-radius: 50%;
+        width: 12rem;
+        padding-bottom: 1rem;
+    }
+
+    .prof-section-card-profession {
+        padding-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .prof-section-card-profession::first-line {
+        font-weight: bold;
+    }
+
+    .prof-section-card-contact {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .prof-section-card-contact a {
+        gap: 0.5rem;
+        text-decoration: none;
+        color: black
+    }
+
+    .prof-section-card-button {
+        margin-top: 2rem;
+        background-color: var(--aviation-blue);
+        border: none;
+    }
+
+    .prof-section-card-button:hover {
+        background-color: var(--);
+    }
 }
 
-.prof-section-p {
-    padding: 3rem 3rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+@media (max-width: 1920px) {
+    
 }
 
-.prof-section-img {
-    width: 35%;
-}
+@media (max-width: 1280px) {
+    .prof-section-container {
+        margin-left: 10%;
+        margin-bottom: 5rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        width: 80%;
+        background-color: white;
+    }
 
-.prof-section-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-left: 6.5%;
-}
+    .prof-section-h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+    }
 
-.prof-section-card-sample {
-    height: 32rem;
-    width: 18rem;
-    margin: 1rem 2rem;
-    box-shadow: 5px 5px 20px var(--aviation-blue);
-}
+    .prof-section-p {
+        padding: 3rem 3rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 
-.prof-section-card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+    .prof-section-img {
+        width: 35%;
+    }
 
-.prof-section-card-img {
-    border-radius: 50%;
-    width: 12rem;
-    padding-bottom: 1rem;
-}
+    .prof-section-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-left: 6.5%;
+    }
 
-.prof-section-card-profession {
-    padding-bottom: 0.5rem;
-    text-align: center;
-}
+    .prof-section-card-sample {
+        height: 32rem;
+        width: 18rem;
+        margin: 1rem 2rem;
+        box-shadow: 5px 5px 20px var(--aviation-blue);
+    }
 
-.prof-section-card-profession::first-line {
-    font-weight: bold;
-}
+    .prof-section-card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-.prof-section-card-contact  {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
+    .prof-section-card-img {
+        border-radius: 50%;
+        width: 12rem;
+        padding-bottom: 1rem;
+    }
 
-.prof-section-card-contact a {
-    gap: 0.5rem;
-    text-decoration: none;
-    color: black
-}
+    .prof-section-card-profession {
+        padding-bottom: 0.5rem;
+        text-align: center;
+    }
 
-.prof-section-card-button {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    background-color: var(--aviation-blue);
+    .prof-section-card-profession::first-line {
+        font-weight: bold;
+    }
+
+    .prof-section-card-contact {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .prof-section-card-contact a {
+        gap: 0.5rem;
+        text-decoration: none;
+        color: black
+    }
+
+    .prof-section-card-button {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        background-color: var(--aviation-blue);
+    }
 }
