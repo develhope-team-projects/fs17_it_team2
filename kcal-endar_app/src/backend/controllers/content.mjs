@@ -123,23 +123,46 @@ const login = async (req, res) => {
     }
 
     // Restituisci la risposta in base al userType
-    if (userType) {
+    if (userType === "user") {
       const payload = {
         id: userData.id,
         email,
       };
-      const { SECRET = "abcd" } = process.env;
+      const { SECRET = " " } = process.env;
       const token = jwt.sign(payload, SECRET);
       console.log(token);
 
-      await db.none(`UPDATE userData SET token=$2 WHERE id=$1`, [
+      await db.oneOrNone(`UPDATE userData SET token=$2 WHERE id=$1`, [
         userData.id,
         token,
       ]);
+
       res.status(201).json({
         message: `L'utente esiste: si può loggare`,
         userType,
         id: Number(userData.id),
+        email,
+        token,
+      });
+    } else if (userType === "doc") {
+      const payload = {
+        id: docData.id,
+        email,
+      };
+
+       const { SECRET = " " } = process.env;
+       const token = jwt.sign(payload, SECRET);
+       console.log(token);
+
+      await db.oneOrNone(`UPDATE docData SET token=$2 WHERE id=$1`, [
+        docData.id,
+        token,
+      ]);
+
+      res.status(201).json({
+        message: `L'utente esiste: si può loggare`,
+        userType,
+        id: Number(docData.id),
         email,
         token,
       });
@@ -150,9 +173,10 @@ const login = async (req, res) => {
     }
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({ message: "Errore durante la registrazione" });
+    res.status(500).json({ message: "Errore durante il login" });
   }
 };
+
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
@@ -162,26 +186,25 @@ const getUsers = async (req, res) => {
   try {
     // Cerca utente nella tabella userData
     const userData = await db.many("SELECT * FROM userData");
+
     const contieneOggettoConID = (array, idSearch) => {
-      array.forEach((element) => {
-        if (element.id === idSearch.id) {
-          console.log(element);
-          return true;
-        }
+      return array.filter((element) => {
+        element.id !== idSearch.id;
+        console.log(element);
       });
-      console.log(idSearch);
     };
+
     if (userData.length > 0) {
       let filterUser = [];
-      userData.map((user) => {
-        if (!contieneOggettoConID(filterUser, user.id)) {
-          filterUser = [...filterUser, user];
+      userData.forEach((user) => {
+        if (contieneOggettoConID(filterUser, user)) {
+          filterUser.push(user);
         }
-        console.log(contieneOggettoConID(filterUser, user.id));
       });
+
       res.status(200).json({ message: "Utenti fetchati", users: filterUser });
     } else {
-      res.status(404).json({ message: "utenti non presenti" });
+      res.status(404).json({ message: "Utenti non presenti" });
     }
   } catch (error) {
     console.error("Errore durante la fetch degli utenti:", error.message);
@@ -266,7 +289,7 @@ const getUserMealsPlanner = async (req, res) => {
 /* ------------------------------------------------------------------------------------------------------ */
 const createFullMealsPlanner = async (req, res) => {
   const { title, calories, notes, start, eend, resource } = req.body;
-  const {userId} = req.params
+  const { userId } = req.params;
 
   try {
     // Esegui la query per inserire un nuovo pasto nel database
@@ -280,13 +303,12 @@ const createFullMealsPlanner = async (req, res) => {
     );
 
     // Invia la risposta con i dati del pasto appena creato
-    res.status(201).json({result, message: "dati ricevuti correttamente"});
+    res.status(201).json({ result, message: "dati ricevuti correttamente" });
   } catch (error) {
     console.error("Errore nell'inserimento del pasto:", error.message);
     res.status(500).send("Internal Server Error");
   }
 };
-
 
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
@@ -320,12 +342,11 @@ const updateFullMealsPlanner = async (req, res) => {
   }
 };
 
-
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 const deleteFullMealsPlanner = async (req, res) => {
-  const {mealId, userId } = req.params;
+  const { mealId, userId } = req.params;
 
   try {
     // Esegui la query per inserire un nuovo pasto nel database
@@ -335,7 +356,7 @@ const deleteFullMealsPlanner = async (req, res) => {
       WHERE id = $1 AND userData_id = $2
       RETURNING *;
     `,
-      [mealId, userId ]
+      [mealId, userId]
     );
 
     // Invia la risposta con i dati del pasto appena creato
@@ -349,6 +370,7 @@ const deleteFullMealsPlanner = async (req, res) => {
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
+//relazione paziente dottore
 
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
@@ -364,5 +386,5 @@ export {
   getUserMealsPlanner,
   createFullMealsPlanner,
   updateFullMealsPlanner,
-  deleteFullMealsPlanner
+  deleteFullMealsPlanner,
 };

@@ -93,10 +93,8 @@ export function ContainerSchedeUsers() {
             {card.map((utente) => (
               <ButtonScheda
                 key={utente.id}
-                monthPlanner={"meal planner: january"}
-                name={` from doctor: ${utente.name}`}
+                name={`👨‍⚕️ ${utente.name}`}
                 surname={utente.surname}
-            
               />
             ))}
           </SwiperSlide>

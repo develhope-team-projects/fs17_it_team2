@@ -32,13 +32,29 @@ export function ContainerSchedeDoc() {
           console.log("array vuoto");
         }
       } catch (error) {
-        console.error(error.message, ": Errore durante la richiesta");
+        console.error(
+          error.response.data.message,
+          ": Errore durante la richiesta"
+        );
       }
     };
 
     fetchData();
     console.log(cardForRow);
   }, []);
+
+
+  const onClickRelationship = async (storedUserId) => {
+     localStorage.setItem ("userId", storedUserId);
+    try {
+      const getUserMeal = await axios.get(
+        `http://localhost:3000/meals/${storedUserId}`
+      );
+      return getUserMeal;
+    } catch (err) {
+      console.error(err.response.data.message, ": Errore durante la richiesta");
+    }
+  };
 
   return (
     <>
@@ -95,6 +111,7 @@ export function ContainerSchedeDoc() {
                   email={utente.email}
                   name={utente.name}
                   surname={utente.surname}
+                  onClickRelationship={ onClickRelationship(utente.id)}
                 />
               ))}
             </SwiperSlide>
