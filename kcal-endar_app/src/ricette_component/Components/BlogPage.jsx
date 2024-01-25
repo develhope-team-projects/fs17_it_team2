@@ -53,20 +53,11 @@ export function BlogPage() {
     navigateRecipe9("/ricette/recipe9");
   }
 
-  const navigateRecipe10 = useNavigate();
-  function recipe10ButtonClick() {
-    navigateRecipe10("/ricette/recipe10");
-  }
+  const navigate = useNavigate();
 
-  const navigateRecipe11 = useNavigate();
-  function recipe11ButtonClick() {
-    navigateRecipe11("/ricette/recipe11");
-  }
-
-  const navigateRecipe12 = useNavigate();
-  function recipe12ButtonClick() {
-    navigateRecipe12("/ricette/recipe12");
-  }
+  const handleButtonRecipeShare = () => {
+    navigate("/condividi-ricetta");
+  };
 
   return (
     <div>
@@ -280,80 +271,14 @@ export function BlogPage() {
             </Button>
           </Card.Body>
         </Card>
-
-        <Card style={{ width: "21rem" }} className="custom-card-ricette">
-          <Card.Img
-            variant="top"
-            src="/src/-assets/media/salmoneAsparagi.jpeg"
-          />
-          <Card.Body>
-            <Card.Title className="titlePreviewRecipe">
-              Salmone al Forno con Asparagi
-            </Card.Title>
-            <Card.Text className="textPreviewRecipe">
-              Una pietanza ricca di acidi grassi omega-3 e vitamine, ideale per
-              mantenere il cuore sano.
-            </Card.Text>
-            <Button
-              variant="primary"
-              className="buttonRecipe"
-              onClick={recipe10ButtonClick}
-            >
-              Vai alla ricetta completa
-            </Button>
-          </Card.Body>
-        </Card>
-
-        <Card style={{ width: "21rem" }} className="custom-card-ricette">
-          <Card.Img
-            variant="top"
-            src="/src/-assets/media/zuppaLenticchie.jpeg"
-          />
-          <Card.Body>
-            <Card.Title className="titlePreviewRecipe">
-              Zuppa di Lenticchie e Verdure
-            </Card.Title>
-            <Card.Text className="textPreviewRecipe">
-              Una deliziosa zuppa ricca di proteine vegetali e fibre, per una
-              cena leggera e salutare.
-            </Card.Text>
-            <Button
-              variant="primary"
-              className="buttonRecipe"
-              onClick={recipe11ButtonClick}
-            >
-              Vai alla ricetta completa
-            </Button>
-          </Card.Body>
-        </Card>
-
-        <Card
-          style={{ width: "21rem" }}
-          className="custom-card-ricette"
-          id="recipe12"
-        >
-          <Card.Img
-            variant="top"
-            src="/src/-assets/media/sformatoMelanzane.jpeg"
-          />
-          <Card.Body>
-            <Card.Title className="titlePreviewRecipe">
-              Sformato di Melanzane
-            </Card.Title>
-            <Card.Text className="textPreviewRecipe">
-              Piatto saporito e nutriente che può essere gustato come contorno o
-              piatto principale.
-            </Card.Text>
-            <Button
-              variant="primary"
-              className="buttonRecipe"
-              onClick={recipe12ButtonClick}
-            >
-              Vai alla ricetta completa
-            </Button>
-          </Card.Body>
-        </Card>
       </div>
+      <button
+        className="button-shareRecipe"
+        type="submit"
+        onClick={handleButtonRecipeShare}
+      >
+        Condividi la tua ricetta
+      </button>
     </div>
   );
 }
