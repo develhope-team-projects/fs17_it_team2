@@ -53,6 +53,21 @@ export function BlogPage() {
     navigateRecipe9("/ricette/recipe9");
   }
 
+  const navigateRecipe10 = useNavigate();
+  function recipe10ButtonClick() {
+    navigateRecipe10("/ricette/recipe10");
+  }
+
+  const navigateRecipe11 = useNavigate();
+  function recipe11ButtonClick() {
+    navigateRecipe11("/ricette/recipe11");
+  }
+
+  const navigateRecipe12 = useNavigate();
+  function recipe12ButtonClick() {
+    navigateRecipe12("/ricette/recipe12");
+  }
+
   const navigate = useNavigate();
 
   const handleButtonRecipeShare = () => {
@@ -206,15 +221,15 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/-assets/media/insalataCeciVerdure.jpeg"
+            src="/src/-assets/media/pastaAvocadoPomodorini.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
-              Insalata di Ceci con Verdure Mediterranee
+              Pasta con Pesto di Avocado e Pomodorini
             </Card.Title>
             <Card.Text className="textPreviewRecipe">
-              Un'insalata leggera e ricca di proteine vegetali, con il gusto
-              fresco delle verdure mediterranee.
+              Una pasta leggera e ricca di grassi salutari, perfetta per chi
+              cerca un'opzione vegetariana.
             </Card.Text>
             <Button
               variant="primary"
@@ -229,15 +244,15 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/-assets/media/insalataQuinoaeVerdure.jpeg"
+            src="/src/-assets/media/insalataUovaSode.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
-              Insalata di Quinoa con Verdure Grigliate
+              Insalata di Uova Sode con Verdure Grigliate e Olive
             </Card.Title>
             <Card.Text className="textPreviewRecipe">
-              Un'insalata equilibrata, arricchita di proteine e fibre, ottima
-              per una cena leggera e nutriente.
+              Un'insalata estiva che combina l'eleganza delle uova sode con il
+              sapore affumicato delle verdure grigliate
             </Card.Text>
             <Button
               variant="primary"
@@ -252,20 +267,88 @@ export function BlogPage() {
         <Card style={{ width: "21rem" }} className="custom-card-ricette">
           <Card.Img
             variant="top"
-            src="/src/-assets/media/polloSalsaYogurt.jpeg"
+            src="/src/-assets/media/tortadiMeleIntegrale.jpeg"
           />
           <Card.Body>
             <Card.Title className="titlePreviewRecipe">
-              Pollo alla Griglia con Salsa di Yogurt alle Erbe
+              Torta di Mele Integrale senza Zucchero Aggiunto
             </Card.Title>
             <Card.Text className="textPreviewRecipe">
-              Una ricetta leggera e proteica, un pasto saziante e nutriente per
-              una cena saporita e salutare.
+              Un dolce salutare e delizioso che unisce il dolce sapore delle
+              mele con l'integrità nutrizionale della farina integrale.
             </Card.Text>
             <Button
               variant="primary"
               className="buttonRecipe"
               onClick={recipe9ButtonClick}
+            >
+              Vai alla ricetta completa
+            </Button>
+          </Card.Body>
+        </Card>
+
+        <Card style={{ width: "21rem" }} className="custom-card-ricette">
+          <Card.Img
+            variant="top"
+            src="/src/-assets/media/merluzzoFunghiZucca.jpeg"
+          />
+          <Card.Body>
+            <Card.Title className="titlePreviewRecipe">
+              Filetto di Merluzzo al Forno con Funghi e Zucca
+            </Card.Title>
+            <Card.Text className="textPreviewRecipe">
+              Piatto sano e bilanciato che fornisce proteine magre e una varietà
+              di nutrienti.
+            </Card.Text>
+            <Button
+              variant="primary"
+              className="buttonRecipe"
+              onClick={recipe10ButtonClick}
+            >
+              Vai alla ricetta completa
+            </Button>
+          </Card.Body>
+        </Card>
+
+        <Card style={{ width: "21rem" }} className="custom-card-ricette">
+          <Card.Img
+            variant="top"
+            src="/src/-assets/media/minestroneOrzoFagioli.jpeg"
+          />
+          <Card.Body>
+            <Card.Title className="titlePreviewRecipe">
+              Minestrone con Orzo e Fagioli
+            </Card.Title>
+            <Card.Text className="textPreviewRecipe">
+              Un pasto completo e sano,ricco di verdure,fibre e proteine,
+              perfetto per le giornate più fresche.
+            </Card.Text>
+            <Button
+              variant="primary"
+              className="buttonRecipe"
+              onClick={recipe11ButtonClick}
+            >
+              Vai alla ricetta completa
+            </Button>
+          </Card.Body>
+        </Card>
+
+        <Card style={{ width: "21rem" }} className="custom-card-ricette">
+          <Card.Img
+            variant="top"
+            src="/src/-assets/media/fesaTacchinoCaroteFunghi.jpeg"
+          />
+          <Card.Body>
+            <Card.Title className="titlePreviewRecipe">
+              Fesa di Tacchino al Forno con Carote e Funghi
+            </Card.Title>
+            <Card.Text className="textPreviewRecipe">
+              Un pasto leggero, saporito e ricco di proteine magre e vitamine.
+            </Card.Text>
+            <Button
+              variant="primary"
+              className="buttonRecipe"
+              onClick={recipe12ButtonClick}
             >
               Vai alla ricetta completa
             </Button>
