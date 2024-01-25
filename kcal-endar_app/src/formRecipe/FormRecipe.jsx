@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./FormRecipe.css";
+import { ButtonRegistrati } from "../homepage_component/Components/ButtonRegistrati";
 import axios from "axios";
 
 export function FormRecipe() {
@@ -90,17 +91,22 @@ export function FormRecipe() {
         <button className="button-sendRecipe" type="submit">
           Invia la tua ricetta
         </button>
+        <p className="form-paragraph-sendRecipe">
+          La tua ricetta sarà in attesa di approvazione prima di essere
+          pubblicata.
+        </p>
+        <p className="form-paragraph-sendRecipe">
+          Riceverai una notifica via email non appena il post contenente la tua
+          ricetta sarà disponibile.
+        </p>
         <br />
-        <p>
-          La tua ricetta sarà in attesa di approvazione prima di essere
-          pubblicata. Riceverai una notifica via email non appena il post
-          contenente la tua ricetta sarà disponibile.
+        <p className="form-paragraph-register">
+          Per condividere una ricetta devi essere prima registrato
         </p>
-        <p>
-          La tua ricetta sarà in attesa di approvazione prima di essere
-          pubblicata. Riceverai una notifica via email non appena il post
-          contenente la tua ricetta sarà disponibile.
+        <p className="form-paragraph-register">
+          <b>Non sei ancora registrato?</b>
         </p>
+        <ButtonRegistrati/>
       </form>
     </div>
   );

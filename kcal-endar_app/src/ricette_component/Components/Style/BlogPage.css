@@ -1,6 +1,6 @@
 
 .mainTitle-ricette {
-  margin-top: 2rem;
+  margin-top: 7rem;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -42,6 +42,24 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.button-shareRecipe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  background-color: #4caf50;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+}
+
+.button-shareRecipe:hover {
+  background-color: #45a049;
 }
 
 
