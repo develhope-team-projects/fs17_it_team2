@@ -1,7 +1,7 @@
 .container-comeFunziona {
   background-color: white;
   max-width: 80rem;
-  margin: 0 auto;
+  margin: auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -9,6 +9,8 @@
   justify-content: center;
   padding-left: 5rem;
   padding-right: 5rem;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 
 .title-comeFunziona {
