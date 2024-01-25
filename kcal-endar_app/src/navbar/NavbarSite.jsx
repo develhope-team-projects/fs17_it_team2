@@ -90,7 +90,7 @@ export function NavbarSite() {
                   </Nav.Link>
                 </Offcanvas.Body>
               </Offcanvas>
-              <Navbar.Brand href="/home" id="navbar-brand-logo">
+              <Navbar.Brand href="/" id="navbar-brand-logo">
                 <img src={logo} alt="KCALendar" id="navbar-logo" />
               </Navbar.Brand>
               <Navbar.Brand id="navbar-brand-avatar">
