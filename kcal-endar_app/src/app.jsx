@@ -11,27 +11,29 @@ import { ChiSiamo } from "./chi_siamo_section/ChiSiamo";
 import { ComeFunziona } from "./come-funziona_component/comeFunziona";
 import { ProfSection } from "./professionisti_section/ProfSection";
 import { AllRecipes } from "./ricette_component/Components/AllRecipes";
+import { FormRecipe } from "./formRecipe/FormRecipe";
 
 
 export const App = () => {
   return (
     <div>
       {" "}
-        <NavbarSite />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/user-dashboard" element={<UserDashboard />} />
-            <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-            <Route path="/chi-siamo" element={<ChiSiamo />} />
-            <Route path="/professionisti" element={<ProfSection/>}/>
-            <Route path="/come-funziona" element={<ComeFunziona />} />
-          </Routes>
-          <AllRecipes />
-        </BrowserRouter>
-        <Footer />{" "}
+      <NavbarSite />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+          <Route path="/chi-siamo" element={<ChiSiamo />} />
+          <Route path="/professionisti" element={<ProfSection />} />
+          <Route path="/come-funziona" element={<ComeFunziona />} />
+          <Route path="/condividi-ricetta" element={<FormRecipe />} />
+        </Routes>
+        <AllRecipes />
+      </BrowserRouter>
+      <Footer />{" "}
     </div>
   );
 };
