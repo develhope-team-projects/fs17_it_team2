@@ -68,34 +68,6 @@ const setupDb = async () => {
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 
-// Funzione per stabilire la relazione tra utente e dottore
-const establishRelationship = async (userId, docId) => {
-  try {
-    // Aggiornamento userData con l'id del dottore scelto
-    await db.none(
-      `
-      UPDATE userData
-      SET docData_id = $1
-      WHERE id = $2;
-    `,
-      [docId, userId]
-    );
-
-    // Aggiornamento meals con l'id del dottore
-    await db.none(
-      `
-      UPDATE meals
-      SET docData_id = $1
-      WHERE userData_id = $2;
-    `,
-      [docId, userId]
-    );
-
-    console.log("Relationship established successfully");
-  } catch (error) {
-    console.error("Error establishing relationship:", error);
-  }
-};
 setupDb();
 
-export { db, establishRelationship };
+export { db };
