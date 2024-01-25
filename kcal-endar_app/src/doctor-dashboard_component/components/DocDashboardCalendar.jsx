@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "../Style/UserDashboardCalendar.css";
+import "../../user-dashboard_component/style/UserDashboardCalendar.css";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import {
   Eventcalendar,
@@ -75,7 +75,10 @@ const responsivePopup = {
   },
 };
 
-export function UserDashboardCalendar() {
+import { useUser } from "../../-shared/UserIdContext";
+
+export function DocDashboardCalendar() {
+  const { selectedUserId, setSelectedUserId } = useUser();
   const [myMeals, setMyMeals] = React.useState([]);
   const [tempMeal, setTempMeal] = React.useState(null);
   const [isOpen, setOpen] = React.useState(false);
@@ -86,14 +89,13 @@ export function UserDashboardCalendar() {
   const [headerText, setHeader] = React.useState("");
   const [type, setType] = React.useState(1);
 
-  // ...
-  const storedUserId = localStorage.getItem("userId");
-
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/meals/${storedUserId}`);
-        console.log(storedUserId, "storeUserId stampato con successo")
+       setSelectedUserId(localStorage.getItem("userId"))
+        const response = await axios.get(
+          `http://localhost:3000/meals/${selectedUserId}`
+        );
         setMyMeals(response.data.meals);
         console.log(response.data.meals);
       } catch (error) {
@@ -105,7 +107,7 @@ export function UserDashboardCalendar() {
     };
 
     fetchData();
-  }, []); 
+  }, [selectedUserId]);
 
   const addMeal = async (newMeal) => {
     try {
@@ -127,15 +129,12 @@ export function UserDashboardCalendar() {
     }
   };
 
-  
-
   const updateMeal = async (updatedMeal) => {
     try {
       await axios.put(
-        `http://localhost:3000/meals/${storedUserId}/${updatedMeal.id}`,
+        `http://localhost:3000/meals/${selectedUserId}/${updatedMeal.id}`,
         updatedMeal
       );
-      console.log(storedUserId, 'userid di calendar')
       const updatedMeals = myMeals.map((meal) =>
         meal.id === updatedMeal.id ? updatedMeal : meal
       );
@@ -148,7 +147,9 @@ export function UserDashboardCalendar() {
 
   const deleteMeal = async (mealId) => {
     try {
-      await axios.delete(`http://localhost:3000/meals/${storedUserId}/${mealId.id}`);
+      await axios.delete(
+        `http://localhost:3000/meals/${selectedUserId}/${mealId.id}`
+      );
       setMyMeals((prevMeals) => prevMeals.filter((meal) => meal.id !== mealId));
       setOpen(false);
     } catch (error) {
@@ -187,7 +188,6 @@ export function UserDashboardCalendar() {
       setMyMeals([...myMeals, newEvent]);
       addMeal(newEvent);
       setDate(newEvent);
-     
     }
     // close the popup
     setOpen(false);

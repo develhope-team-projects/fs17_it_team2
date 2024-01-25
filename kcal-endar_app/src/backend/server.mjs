@@ -9,6 +9,7 @@ import {
   createFullMealsPlanner,
   updateFullMealsPlanner,
   deleteFullMealsPlanner,
+  relationshipUserDoc
   
 } from "./controllers/content.mjs";
 import express from "express";
@@ -27,6 +28,7 @@ app.get("/meals/:userId", getUserMealsPlanner);
 app.post("/meals/:userId", createFullMealsPlanner);
 app.put("/meals/:userId/:mealId", updateFullMealsPlanner);
 app.delete("/meals/:userId/:mealId", deleteFullMealsPlanner);
+app.post("/relationship", relationshipUserDoc )
 
 
 

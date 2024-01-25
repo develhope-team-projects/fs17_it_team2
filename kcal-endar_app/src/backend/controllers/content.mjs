@@ -150,9 +150,9 @@ const login = async (req, res) => {
         email,
       };
 
-       const { SECRET = " " } = process.env;
-       const token = jwt.sign(payload, SECRET);
-       console.log(token);
+      const { SECRET = " " } = process.env;
+      const token = jwt.sign(payload, SECRET);
+      console.log(token);
 
       await db.oneOrNone(`UPDATE docData SET token=$2 WHERE id=$1`, [
         docData.id,
@@ -372,6 +372,46 @@ const deleteFullMealsPlanner = async (req, res) => {
 /* ------------------------------------------------------------------------------------------------------ */
 //relazione paziente dottore
 
+const establishRelationship = async (userId, docId) => {
+  try {
+    // Aggiornamento userData con l'id del dottore scelto
+    await db.none(
+      `
+      UPDATE userData
+      SET docData_id = $1
+      WHERE id = $2;
+    `,
+      [docId, userId]
+    );
+
+    // Aggiornamento meals con l'id del dottore
+    await db.none(
+      `
+      UPDATE meals
+      SET docData_id = $1
+      WHERE userData_id = $2;
+    `,
+      [docId, userId]
+    );
+
+    console.log("Relationship established successfully");
+  } catch (error) {
+    console.error("Error establishing relationship:", error);
+  }
+};
+
+const relationshipUserDoc = async (req, res) => {
+  const { userId, doctorId} = req.body;
+
+  try {
+    await establishRelationship(userId, doctorId)
+    res.status(201).json({ message: "dati aggiornati correttamente" });
+  } catch (error) {
+    console.error("Errore nello stabilire la relazione:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------ */
@@ -387,4 +427,6 @@ export {
   createFullMealsPlanner,
   updateFullMealsPlanner,
   deleteFullMealsPlanner,
+  establishRelationship,
+  relationshipUserDoc,
 };

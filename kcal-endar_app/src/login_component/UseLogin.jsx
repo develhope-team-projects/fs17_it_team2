@@ -41,32 +41,33 @@ export function UseLogin() {
       try {
         const res = await axios.post(loginUser, dataLogin);
         console.log(res.data.id);
+          const userId = res.data.id;
+          const docId = res.data.id;
 
         const userType = res.data.userType;
         if (userType === "user") {
+          localStorage.setItem("userId", userId);
           navigateLogin("/user-dashboard");
         } else if (userType === "doc") {
+          localStorage.setItem("docId", docId);
           navigateLogin("/doctor-dashboard");
         } else {
-              console.error(res.data.message);
+          console.error(res.data.message);
         }
-              // estraiamo l'id
-              console.log(res.data.id, "first userId 'api url'");
-        const userId = res.data.id;
-
-        localStorage.setItem("userId", userId);
- 
+        
+        console.log(res.data.id, "first userId 'api url'");
+    
         const getMealsPlanner = `http://localhost:3000/meals/${userId}`;
-              console.log(userId, "second userId 'getMealsPlanner' ");
+        console.log(userId, "second userId 'getMealsPlanner' ");
         const response = await axios.get(getMealsPlanner);
-          return response  
-        } catch (error) {
+        return response;
+      } catch (error) {
         if (error.response) {
-              console.error("Errore lato server:", error.response.data.message);
+          console.error("Errore lato server:", error.response.data.message);
         } else if (error.request) {
-              console.error("Nessuna risposta dal server");
+          console.error("Nessuna risposta dal server");
         } else {
-              console.error("Errore durante la richiesta:", error.message);
+          console.error("Errore durante la richiesta:", error.message);
         }
       }
     }
