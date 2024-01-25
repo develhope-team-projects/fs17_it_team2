@@ -1,4 +1,3 @@
-
 .mainTitle-ricette {
   margin-top: 7rem;
   margin-bottom: 2rem;
@@ -46,7 +45,6 @@
 
 .button-shareRecipe {
   display: flex;
-  justify-content: center;
   align-items: center;
   margin: 0 auto;
   margin-bottom: 4rem;
@@ -76,11 +74,12 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px){
   .card-container-ricette {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 
 @media (min-width: 1280px) {
   .card-container-ricette {

@@ -48,6 +48,7 @@ export function FormRecipe() {
           Email:
           <span className="required-recipe">*</span>
           <input
+            className="input-recipeForm"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -59,6 +60,7 @@ export function FormRecipe() {
           Nome della ricetta:
           <span className="required-recipe">*</span>
           <input
+            className="input-recipeForm"
             type="text"
             value={recipeName}
             onChange={(e) => setRecipeName(e.target.value)}
@@ -70,7 +72,7 @@ export function FormRecipe() {
           Ingredienti:
           <span className="required-recipe">*</span>
           <textarea
-            className="textarea-recipe"
+            className="textarea-recipeForm"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
             required
@@ -81,7 +83,7 @@ export function FormRecipe() {
           Procedimento:
           <span className="required-recipe">*</span>
           <textarea
-            className="textarea-recipe"
+            className="textarea-recipeForm"
             value={procedure}
             onChange={(e) => setProcedure(e.target.value)}
             required
@@ -106,7 +108,7 @@ export function FormRecipe() {
         <p className="form-paragraph-register">
           <b>Non sei ancora registrato?</b>
         </p>
-        <ButtonRegistrati/>
+        <ButtonRegistrati />
       </form>
     </div>
   );

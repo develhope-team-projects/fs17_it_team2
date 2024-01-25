@@ -355,13 +355,15 @@ export function BlogPage() {
           </Card.Body>
         </Card>
       </div>
-      <button
-        className="button-shareRecipe"
-        type="submit"
-        onClick={handleButtonRecipeShare}
-      >
-        Condividi la tua ricetta
-      </button>
+      <div>
+        <button
+          className="button-shareRecipe"
+          type="submit"
+          onClick={handleButtonRecipeShare}
+        >
+          Condividi la tua ricetta
+        </button>
+      </div>
     </div>
   );
 }

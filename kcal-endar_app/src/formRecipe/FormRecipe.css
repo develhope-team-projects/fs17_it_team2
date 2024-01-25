@@ -31,8 +31,8 @@
   margin-left: 0.5rem;
 }
 
-input,
-.textarea-recipe {
+.input-recipeForm,
+.textarea-recipeForm {
   margin-bottom: 1.5rem;
   padding: 1rem;
   font-size: 1.5rem;
@@ -41,7 +41,7 @@ input,
  
 }
 
-.textarea-recipe {
+.textarea-recipeForm {
   max-width: 90%;
   min-width: 90%;
 }
