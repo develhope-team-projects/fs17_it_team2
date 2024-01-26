@@ -4,6 +4,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 10rem;
         margin-left: 10%;
         margin-bottom: 5rem;
         padding-top: 5rem;
@@ -154,7 +155,7 @@
     }
 
     .prof-section-cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .prof-section-card-sample {
