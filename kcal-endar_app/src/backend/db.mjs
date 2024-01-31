@@ -7,6 +7,20 @@ const db = pgPromise()(`postgres://postgres:${PASSPOSTGRES}@localhost:5432/postg
 
 const setupDb = async () => {
   try {
+    // Creazione tabella docData
+    await db.none(`
+      CREATE TABLE IF NOT EXISTS docData (
+        id SERIAL NOT NULL PRIMARY KEY,
+        name TEXT NOT NULL,
+        surname TEXT NOT NULL,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
+        token TEXT
+
+      );
+    `);
+
     /* ------------------------------------------------------------------------------------------------------ */
     /* ------------------------------------------------------------------------------------------------------ */
     /* ------------------------------------------------------------------------------------------------------ */
@@ -24,23 +38,6 @@ const setupDb = async () => {
       );
     `);
 
-    /* ------------------------------------------------------------------------------------------------------ */
-    /* ------------------------------------------------------------------------------------------------------ */
-    /* ------------------------------------------------------------------------------------------------------ */
-
-    // Creazione tabella docData
-    await db.none(`
-      CREATE TABLE IF NOT EXISTS docData (
-        id SERIAL NOT NULL PRIMARY KEY,
-        name TEXT NOT NULL,
-        surname TEXT NOT NULL,
-        username TEXT NOT NULL,
-        email TEXT NOT NULL,
-        password TEXT NOT NULL,
-        token TEXT
-
-      );
-    `);
 
     /* ------------------------------------------------------------------------------------------------------ */
     /* ------------------------------------------------------------------------------------------------------ */
