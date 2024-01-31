@@ -45,10 +45,3 @@ Emilio Sanguinè </i>
 <h2>Class style convention: </h2>
  
 <h4><b>block/element-details</b> <br> </h4>
-
-ES: <br>
-<i>class="navbar-list-items" <br>
-class="section-iscriviti-subito <br>
-class="input-gioca-con-noi" <br>
-class="card-ultime-novità" <br>
-</i>
